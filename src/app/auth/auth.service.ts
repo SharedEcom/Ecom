@@ -7,14 +7,16 @@ import { User } from '../models/User';
 })
 export class AuthService {
 
+  user: User
+
   constructor(public http: HttpClient) { }
 
-  signin(user) {
-    this.http.post('http://localhost:8080/signin', user)
+  signin(user: User) {
+    return this.http.post('http://localhost:8080/signin', user)
   }
 
-  signup(user) {
-    this.http.post('http://localhost:8080/signup', user)
+  signup(user: User) {
+    return this.http.post('http://localhost:8080/signup', user)
   }
 
 }

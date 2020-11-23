@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../models/User';
+import { NavbarService } from '../shared/navbar.service';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
 
   states: string[]
+  user: User
+  successFlag: boolean
+  errorFlag: boolean
 
-  constructor() {
+  constructor(public navService: NavbarService, public authService: AuthService, public router: Router) {
+
+    navService.hide()
+
     this.states = ["Andaman and Nicobar Islands",
       "Andra Pradesh",
       "Arunachal Pradesh",
@@ -50,6 +60,33 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.navService.show()
+  }
+
+  registerSubmit() {
+    this.successFlag = false
+    this.errorFlag = false
+    console.log(this.user)
+    // this.authService.signup(this.user).subscribe(res => {
+    //   if (res === null || res === undefined) {
+    //     // LOGIN FAILED
+    //     this.errorFlag = true
+    //     setTimeout(() => {
+    //       this.errorFlag = false
+    //       this.router.navigateByUrl('/register')
+    //     }, 3000)
+    //   } else {
+    //     // LOGIN SUCCESS
+    //     this.successFlag = true
+    //     setTimeout(() => {
+    //       this.router.navigateByUrl('/login')
+    //     }, 2000)
+    //   }
+    // })
+    this.user = new User()
   }
 
 }
