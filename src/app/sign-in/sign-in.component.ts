@@ -31,7 +31,7 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.successFlag = false
     this.errorFlag = false
 
-    this.authService.signin(this.user).subscribe(res => {
+    this.authService.signin(this.user).subscribe((res: User) => {
       if (res === null || res === undefined) {
         // LOGIN FAILED
         this.errorFlag = true
@@ -45,6 +45,7 @@ export class SignInComponent implements OnInit, OnDestroy {
         setTimeout(() => {
           this.router.navigateByUrl('')
         }, 2000)
+        this.authService.selectedUser = res
       }
     })
     this.user = new User()

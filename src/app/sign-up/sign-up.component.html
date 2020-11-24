@@ -8,7 +8,7 @@
                     <label for="firstName">First Name</label>
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
                         #firstName="ngModel" [(ngModel)]="user.firstName" required>
-                    <small class="form-text text-danger" *ngIf="firstName.dirty && firstName.invalid">FirstName
+                    <small class="form-text text-danger" *ngIf="firstName.dirty && firstName.invalid">First Name
                         can't be empty</small>
                 </div>
                 <div class="form-group col-md-6">
@@ -22,9 +22,11 @@
                 <div class="form-group col-md-6">
                     <label for="userUsername">Username</label>
                     <input type="email" class="form-control" id="userUsername" name="userUsername"
-                        placeholder="Username" #username="ngModel" [(ngModel)]="user.username" required>
+                        (blur)="checkUsername()" placeholder="Username" #username="ngModel" [(ngModel)]="user.username"
+                        required>
                     <small class="form-text text-danger" *ngIf="username.dirty && username.invalid">Username
                         can't be empty</small>
+                    <small class="form-text text-danger" *ngIf="usernameExists">{{ usernameMsg }}</small>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="userPassword">Password</label>
@@ -38,9 +40,9 @@
                 <div class="form-group col-md-6">
                     <label for="userContact">Contact Number</label>
                     <input type="text" class="form-control" id="userContact" name="userContact" placeholder="XXXXXXXXXX"
-                        #customerPhone="ngModel" [(ngModel)]="user.customerPhone" minlength=10 maxlength=10 required >
-                        <small class="form-text text-danger" *ngIf="customerPhone.dirty && customerPhone.invalid">Contact
-                            must have 10 digits</small>
+                        #customerPhone="ngModel" [(ngModel)]="user.customerPhone" minlength=10 maxlength=10 required>
+                    <small class="form-text text-danger" *ngIf="customerPhone.dirty && customerPhone.invalid">Contact
+                        must have 10 digits</small>
 
                 </div>
                 <div class="form-group col-md-6">
@@ -97,7 +99,8 @@
                 <div class="form-group col-md-2">
                     <label for="userPostalCode">ZIP</label>
                     <input type="text" class="form-control" id="userPostalCode" name="userPostalCode"
-                        placeholder="xxx-xxx" #postalCode="ngModel" [(ngModel)]="user.postalCode" minlength=6 maxlength=6 required>
+                        placeholder="xxx-xxx" #postalCode="ngModel" [(ngModel)]="user.postalCode" minlength=6
+                        maxlength=6 required>
                     <small class="form-text text-danger" *ngIf="postalCode.dirty && postalCode.invalid">Postal Code
                         must have 6 digits</small>
                 </div>

@@ -11,12 +11,12 @@ import { NavbarService } from '../shared/navbar.service';
 })
 export class SignUpComponent implements OnInit, OnDestroy {
 
-
-
   states: string[]
   user: User
   successFlag: boolean
   errorFlag: boolean
+  usernameExists: boolean
+  usernameMsg: string
 
   constructor(public navService: NavbarService, public authService: AuthService, public router: Router) {
 
@@ -70,10 +70,31 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.navService.show()
   }
 
+  checkUsername() {
+    this.usernameExists = false
+    if (this.user.username === null || this.user.username === undefined || this.user.username === '') {
+
+    } else {
+      this.authService.checkUsername(this.user.username).subscribe(res => {
+        if (res === null || res === undefined) {
+          this.usernameExists = true
+          this.usernameMsg = 'Error Checking Username. Please Try Again'
+        } else {
+          if (res.queryStatus) {
+            this.usernameExists = true
+            this.usernameMsg = 'Username already Exists. Choose another Username'
+          } else {
+            this.usernameMsg = ''
+          }
+        }
+      })
+    }
+  }
+
   registerSubmit() {
     this.successFlag = false
     this.errorFlag = false
-    console.log(this.user)
+
     this.authService.signup(this.user).subscribe(res => {
       if (res === null || res === undefined) {
         // REGISTER FAILED
@@ -85,12 +106,11 @@ export class SignUpComponent implements OnInit, OnDestroy {
       } else {
         // REGISTER SUCCESS
         this.successFlag = true
+        console.log('SUCCESS FLAG::' + this.successFlag)
         setTimeout(() => {
           this.router.navigateByUrl('/login')
         }, 2000)
       }
     })
-    this.user = new User()
   }
-
 }

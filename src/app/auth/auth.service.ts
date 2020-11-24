@@ -7,7 +7,7 @@ import { User } from '../models/User';
 })
 export class AuthService {
 
-  user: User
+  selectedUser: User
 
   constructor(public http: HttpClient) { }
 
@@ -17,6 +17,10 @@ export class AuthService {
 
   signup(user: User) {
     return this.http.post('http://localhost:8080/signup', user)
+  }
+
+  checkUsername(username: string): any {
+    return this.http.get('http://localhost:8080/validate/' + username)
   }
 
 }
