@@ -7,7 +7,7 @@ import { User } from '../models/User';
 })
 export class AuthService {
 
-  user: User
+  selectedUser: User
 
   constructor(public http: HttpClient) { }
 

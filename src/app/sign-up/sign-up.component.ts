@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   user: User
   successFlag: boolean
   errorFlag: boolean
+  usernameExists: boolean
 
   constructor(public navService: NavbarService, public authService: AuthService, public router: Router) {
 
@@ -68,10 +69,14 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.navService.show()
   }
 
+  checkUsername() {
+    console.log(this.user.username)
+  }
+
   registerSubmit() {
     this.successFlag = false
     this.errorFlag = false
-    console.log(this.user)
+
     this.authService.signup(this.user).subscribe(res => {
       if (res === null || res === undefined) {
         // REGISTER FAILED
@@ -83,12 +88,11 @@ export class SignUpComponent implements OnInit, OnDestroy {
       } else {
         // REGISTER SUCCESS
         this.successFlag = true
+        console.log('SUCCESS FLAG::' + this.successFlag)
         setTimeout(() => {
           this.router.navigateByUrl('/login')
         }, 2000)
       }
     })
-    this.user = new User()
   }
-
 }
