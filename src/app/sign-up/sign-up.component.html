@@ -7,60 +7,85 @@
                 <div class="form-group col-md-6">
                     <label for="firstName">First Name</label>
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
-                        #firstName="ngModel" [(ngModel)]="user.firstName">
+                        #firstName="ngModel" [(ngModel)]="user.firstName" required>
+                    <small class="form-text text-danger" *ngIf="firstName.dirty && firstName.invalid">FirstName
+                        can't be empty</small>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="lastName">Last Name</label>
                     <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"
                         #lastName="ngModel" [(ngModel)]="user.lastName">
+
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="userUsername">Username</label>
                     <input type="email" class="form-control" id="userUsername" name="userUsername"
-                        (blur)="checkUsername()" placeholder="Username" #username="ngModel" [(ngModel)]="user.username">
+                        (blur)="checkUsername()" placeholder="Username" #username="ngModel" [(ngModel)]="user.username"
+                        required>
+                    <small class="form-text text-danger" *ngIf="username.dirty && username.invalid">Username
+                        can't be empty</small>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="userPassword">Password</label>
                     <input type="password" class="form-control" id="userPassword" name="userPassword"
-                        placeholder="Password" #password="ngModel" [(ngModel)]="user.password">
+                        placeholder="Password" #password="ngModel" [(ngModel)]="user.password" required>
+                    <small class="form-text text-danger" *ngIf="password.dirty && password.invalid">Password
+                        can't be empty</small>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="userContact">Contact Number</label>
                     <input type="text" class="form-control" id="userContact" name="userContact" placeholder="XXXXXXXXXX"
-                        #customerPhone="ngModel" [(ngModel)]="user.customerPhone">
+                        #customerPhone="ngModel" [(ngModel)]="user.customerPhone" minlength=10 maxlength=10 required>
+                    <small class="form-text text-danger" *ngIf="customerPhone.dirty && customerPhone.invalid">Contact
+                        must have 10 digits</small>
+
                 </div>
                 <div class="form-group col-md-6">
                     <label for="userEmail">Email Address</label>
                     <input type="text" class="form-control" id="userEmail" name="userEmail"
-                        placeholder="someone@email.com" #customerEmail="ngModel" [(ngModel)]="user.customerEmail">
+                        placeholder="someone@email.com" #customerEmail="ngModel" [(ngModel)]="user.customerEmail"
+                        required>
+                    <small class="form-text text-danger" *ngIf="customerEmail.dirty && customerEmail.invalid ">Email
+                        can't be empty</small>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="userFlat">Flat/House Number</label>
                     <input type="text" class="form-control" id="userFlat" name="userFlat" placeholder="Flat/House No."
-                        #flatNumber="ngModel" [(ngModel)]="user.flatNumber">
+                        #flatNumber="ngModel" [(ngModel)]="user.flatNumber" required>
+                    <small class="form-text text-danger" *ngIf="flatNumber.dirty && flatNumber.invalid">Flat No.
+                        can't be empty</small>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="userBuilding">Building</label>
                     <input type="text" class="form-control" id="userBuilding" name="userBuilding"
-                        placeholder="Building Name" #customerBuilding="ngModel" [(ngModel)]="user.customerBuilding">
+                        placeholder="Building Name" #customerBuilding="ngModel" [(ngModel)]="user.customerBuilding"
+                        required>
+                    <small class="form-text text-danger"
+                        *ngIf="customerBuilding.dirty && customerBuilding.invalid">Building name
+                        can't be empty</small>
+
                 </div>
             </div>
             <div class="form-group">
                 <label for="userAddress">Address</label>
                 <input type="text" class="form-control" id="userAddress" placeholder="Locality" name="userAddress"
-                    #customerAddress="ngModel" [(ngModel)]="user.customerAddress">
+                    #customerAddress="ngModel" [(ngModel)]="user.customerAddress" required>
+                <small class="form-text text-danger" *ngIf="customerAddress.dirty && customerAddress.invalid">Address
+                    can't be empty</small>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="userCity">City</label>
                     <input type="text" class="form-control" id="userCity" name="userCity" placeholder="Some City"
-                        #customerCity="ngModel" [(ngModel)]="user.customerCity">
+                        #customerCity="ngModel" [(ngModel)]="user.customerCity" required>
+                    <small class="form-text text-danger" *ngIf="customerCity.dirty && customerCity.invalid">City
+                        can't be empty</small>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="userState">State</label>
@@ -73,7 +98,10 @@
                 <div class="form-group col-md-2">
                     <label for="userPostalCode">ZIP</label>
                     <input type="text" class="form-control" id="userPostalCode" name="userPostalCode"
-                        placeholder="xxx-xxx" #postalCode="ngModel" [(ngModel)]="user.postalCode">
+                        placeholder="xxx-xxx" #postalCode="ngModel" [(ngModel)]="user.postalCode" minlength=6
+                        maxlength=6 required>
+                    <small class="form-text text-danger" *ngIf="postalCode.dirty && postalCode.invalid">Postal Code
+                        must have 6 digits</small>
                 </div>
             </div>
             <button type="submit" class="btn btn-dark form-group form-control mt-3"
