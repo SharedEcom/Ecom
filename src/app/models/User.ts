@@ -31,21 +31,21 @@ export class User {
         this.customerBuilding = ''
         this.customerAddress = ''
         this.customerCity = ''
-        this.customerState = ''
-        this.postalCode = 0
-        this.customerCountry = ''
-        this.customerPhone = 0
+        this.customerState = 'Choose...'
+        this.postalCode
+        this.customerCountry = 'India'
+        this.customerPhone
         this.customerEmail = ''
         this.username = ''
         this.password = ''
         this.cardType = ''
-        this.cardNumber = 0
-        this.cardMonth = 0
-        this.cardYear = 0
+        this.cardNumber
+        this.cardMonth
+        this.cardYear
         this.shippingAddress = ''
         this.shippingCity = ''
         this.shippingState = ''
-        this.shippingCode = 0
+        this.shippingCode
         this.shippingCountry = ''
     }
 }

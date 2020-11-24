@@ -20,6 +20,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
     navService.hide()
 
+    this.user = new User()
+
     this.states = ["Andaman and Nicobar Islands",
       "Andra Pradesh",
       "Arunachal Pradesh",
@@ -70,22 +72,22 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.successFlag = false
     this.errorFlag = false
     console.log(this.user)
-    // this.authService.signup(this.user).subscribe(res => {
-    //   if (res === null || res === undefined) {
-    //     // LOGIN FAILED
-    //     this.errorFlag = true
-    //     setTimeout(() => {
-    //       this.errorFlag = false
-    //       this.router.navigateByUrl('/register')
-    //     }, 3000)
-    //   } else {
-    //     // LOGIN SUCCESS
-    //     this.successFlag = true
-    //     setTimeout(() => {
-    //       this.router.navigateByUrl('/login')
-    //     }, 2000)
-    //   }
-    // })
+    this.authService.signup(this.user).subscribe(res => {
+      if (res === null || res === undefined) {
+        // REGISTER FAILED
+        this.errorFlag = true
+        setTimeout(() => {
+          this.errorFlag = false
+          this.router.navigateByUrl('/register')
+        }, 3000)
+      } else {
+        // REGISTER SUCCESS
+        this.successFlag = true
+        setTimeout(() => {
+          this.router.navigateByUrl('/login')
+        }, 2000)
+      }
+    })
     this.user = new User()
   }
 
