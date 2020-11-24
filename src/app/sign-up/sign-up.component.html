@@ -8,7 +8,7 @@
                     <label for="firstName">First Name</label>
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
                         #firstName="ngModel" [(ngModel)]="user.firstName" required>
-                    <small class="form-text text-danger" *ngIf="firstName.dirty && firstName.invalid">FirstName
+                    <small class="form-text text-danger" *ngIf="firstName.dirty && firstName.invalid">First Name
                         can't be empty</small>
                 </div>
                 <div class="form-group col-md-6">
@@ -26,6 +26,7 @@
                         required>
                     <small class="form-text text-danger" *ngIf="username.dirty && username.invalid">Username
                         can't be empty</small>
+                    <small class="form-text text-danger" *ngIf="usernameExists">{{ usernameMsg }}</small>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="userPassword">Password</label>

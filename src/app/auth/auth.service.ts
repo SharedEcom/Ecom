@@ -19,4 +19,8 @@ export class AuthService {
     return this.http.post('http://localhost:8080/signup', user)
   }
 
+  checkUsername(username: string): any {
+    return this.http.get('http://localhost:8080/validate/' + username)
+  }
+
 }
