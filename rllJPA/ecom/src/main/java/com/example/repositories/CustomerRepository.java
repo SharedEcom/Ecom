@@ -1,6 +1,8 @@
-package com.example.ecom;
+package com.example.repositories;
 
 import org.springframework.data.repository.CrudRepository;
+
+import com.example.models.Customer;
 
 public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 

@@ -1,18 +1,18 @@
-package com.example.ecom;
+package com.example.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="products")
+@Entity(name = "products")
 public class Product {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer productId;
 	private Long skuCode;
-	private String  productBrand;
+	private String productBrand;
 	private String productName;
 	private String productDescription;
 	private Integer supplierId;
@@ -24,9 +24,9 @@ public class Product {
 	private Integer isAvailable;
 	private Integer discountAvailable;
 	private String imageUrl;
-	
+
 	public Product() {
-		
+
 	}
 
 	public Product(Integer productId, Long skuCode, String productBrand, String productName, String productDescription,
@@ -170,5 +170,4 @@ public class Product {
 				+ ", discountAvailable=" + discountAvailable + ", imageUrl=" + imageUrl + "]";
 	}
 
-	
 }

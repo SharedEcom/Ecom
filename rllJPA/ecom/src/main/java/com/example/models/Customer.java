@@ -1,13 +1,13 @@
-package com.example.ecom;
+package com.example.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="customers")
+@Entity(name = "customers")
 public class Customer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer customerId;
@@ -33,11 +33,9 @@ public class Customer {
 	private String shippingState;
 	private Integer shippingCode;
 	private String shippingCountry;
-	
-	
+
 	public Customer() {
 	}
-
 
 	public Customer(Integer customerId, String firstName, String lastName, String flatNumber, String customerBuilding,
 			String customerAddress, String customerCity, String customerState, Integer postalCode,
@@ -69,236 +67,189 @@ public class Customer {
 		this.shippingCountry = shippingCountry;
 	}
 
-
 	public Integer getCustomerId() {
 		return customerId;
 	}
-
 
 	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 
-
 	public String getFirstName() {
 		return firstName;
 	}
-
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-
 	public String getLastName() {
 		return lastName;
 	}
-
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-
 	public String getFlatNumber() {
 		return flatNumber;
 	}
-
 
 	public void setFlatNumber(String flatNumber) {
 		this.flatNumber = flatNumber;
 	}
 
-
 	public String getCustomerBuilding() {
 		return customerBuilding;
 	}
-
 
 	public void setCustomerBuilding(String customerBuilding) {
 		this.customerBuilding = customerBuilding;
 	}
 
-
 	public String getCustomerAddress() {
 		return customerAddress;
 	}
-
 
 	public void setCustomerAddress(String customerAddress) {
 		this.customerAddress = customerAddress;
 	}
 
-
 	public String getCustomerCity() {
 		return customerCity;
 	}
-
 
 	public void setCustomerCity(String customerCity) {
 		this.customerCity = customerCity;
 	}
 
-
 	public String getCustomerState() {
 		return customerState;
 	}
-
 
 	public void setCustomerState(String customerState) {
 		this.customerState = customerState;
 	}
 
-
 	public Integer getPostalCode() {
 		return postalCode;
 	}
-
 
 	public void setPostalCode(Integer postalCode) {
 		this.postalCode = postalCode;
 	}
 
-
 	public String getCustomerCountry() {
 		return customerCountry;
 	}
-
 
 	public void setCustomerCountry(String customerCountry) {
 		this.customerCountry = customerCountry;
 	}
 
-
 	public Double getCustomerPhone() {
 		return customerPhone;
 	}
-
 
 	public void setCustomerPhone(Double customerPhone) {
 		this.customerPhone = customerPhone;
 	}
 
-
 	public String getCustomerEmail() {
 		return customerEmail;
 	}
-
 
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
 
-
 	public String getUsername() {
 		return username;
 	}
-
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
 	public String getCardType() {
 		return cardType;
 	}
-
 
 	public void setCardType(String cardType) {
 		this.cardType = cardType;
 	}
 
-
 	public Long getCardNumber() {
 		return cardNumber;
 	}
-
 
 	public void setCardNumber(Long cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 
-
 	public Integer getCardMonth() {
 		return cardMonth;
 	}
-
 
 	public void setCardMonth(Integer cardMonth) {
 		this.cardMonth = cardMonth;
 	}
 
-
 	public Integer getCardYear() {
 		return cardYear;
 	}
-
 
 	public void setCardYear(Integer cardYear) {
 		this.cardYear = cardYear;
 	}
 
-
 	public String getShippingAddress() {
 		return shippingAddress;
 	}
-
 
 	public void setShippingAddress(String shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 
-
 	public String getShippingCity() {
 		return shippingCity;
 	}
-
 
 	public void setShippingCity(String shippingCity) {
 		this.shippingCity = shippingCity;
 	}
 
-
 	public String getShippingState() {
 		return shippingState;
 	}
-
 
 	public void setShippingState(String shippingState) {
 		this.shippingState = shippingState;
 	}
 
-
 	public Integer getShippingCode() {
 		return shippingCode;
 	}
-
 
 	public void setShippingCode(Integer shippingCode) {
 		this.shippingCode = shippingCode;
 	}
 
-
 	public String getShippingCountry() {
 		return shippingCountry;
 	}
 
-
 	public void setShippingCountry(String shippingCountry) {
 		this.shippingCountry = shippingCountry;
 	}
-
 
 	@Override
 	public String toString() {
@@ -313,8 +264,4 @@ public class Customer {
 				+ shippingCountry + "]";
 	}
 
-
-	
-	
-	
 }

@@ -1,0 +1,70 @@
+package com.example.controllers;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.models.Customer;
+import com.example.models.Status;
+import com.example.repositories.CustomerRepository;
+
+@RestController
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE,
+		RequestMethod.POST })
+public class AuthController {
+
+	@Autowired
+	private CustomerRepository customerRepository;
+
+	@Autowired
+	private HttpSession httpSession;
+	
+	@PostMapping("/signin")
+	public Customer signIn(@RequestBody Customer customer) {
+		Customer dbCustomer = customerRepository.findByUsernameAndPassword(customer.getUsername(),
+				customer.getPassword());
+
+		if (dbCustomer != null && dbCustomer.getUsername().equals(customer.getUsername())
+				&& dbCustomer.getPassword().equals(customer.getPassword())) {
+			httpSession.setAttribute("customerId", dbCustomer.getCustomerId());
+			return dbCustomer;
+		}
+		return null;
+	}
+
+	@PostMapping("/signup")
+	public Customer signUp(@RequestBody Customer customer) {
+		try {
+			Customer db = customerRepository.save(customer);
+			return db;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Inside catch");
+			return null;
+		}
+
+	}
+
+	@GetMapping("/validate/{username}")
+	public Status validateUsername(@PathVariable String username) {
+
+		Customer db = customerRepository.findByUsername(username);
+		System.out.println(db);
+		if (db != null) {
+			return new Status(true);
+		}
+
+		else {
+			return new Status(false);
+		}
+
+	}
+
+}

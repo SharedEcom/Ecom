@@ -1,4 +1,4 @@
-package com.example.ecom;
+package com.example.models;
 
 public class Status {
 	private boolean queryStatus;
