@@ -30,9 +30,6 @@ public class AppController {
 	
 	@Autowired
 	private ProductRepository productRepository;
-	
-	@Autowired
-	private ProductDetailsRepository productDetailsRepository;
 
 	@Autowired
 	private HttpSession httpSession;
@@ -62,16 +59,6 @@ public class AppController {
 
 	public void setProductRepository(ProductRepository productRepository) {
 		this.productRepository = productRepository;
-	}
-	
-	
-
-	public ProductDetailsRepository getProductDetailsRepository() {
-		return productDetailsRepository;
-	}
-
-	public void setProductDetailsRepository(ProductDetailsRepository productDetailsRepository) {
-		this.productDetailsRepository = productDetailsRepository;
 	}
 
 	public boolean validate() {
@@ -252,66 +239,6 @@ public class AppController {
 		}
 		return products;
 	}
-	
-	
-	@GetMapping("/productDetails/all")
-	public List<ProductDetails> viewAllProductDetails() {
-		List<ProductDetails> productdetails = new ArrayList<ProductDetails>();
-		Iterable<ProductDetails> iterable = productDetailsRepository.findAll();
-		
-		for (ProductDetails pd : iterable) {
-			productdetails.add(pd);
-		}
-		return productdetails;
-	}
-	
-	@PostMapping("/productDetails/add")
-	public ProductDetails addProductDetails(@RequestBody ProductDetails productDetails) {
-		try {
-			ProductDetails db=productDetailsRepository.save(productDetails);
-		 return db;
-		}
-		catch(Exception e){
-			System.out.println(e.getMessage());
-			return null;
-		}
-	}
-
-	@DeleteMapping("/deleteProductDetails/{id}")
-	public Status deleteProductDetails(@PathVariable Integer id) {
-		try {
-		productDetailsRepository.deleteById(id);
-		return new Status(true);
-		}
-		catch(Exception e){
-			System.out.println(e.getMessage());
-			return new Status(false);
-		}
-	}
-	
-	@PutMapping("/productDetails/update")
-	public ProductDetails updateProductDetails(@RequestBody ProductDetails productDetails) {
-	try {
-		ProductDetails db=productDetailsRepository.save(productDetails);
-		 return db;
-		}
-		catch(Exception e){
-			System.out.println(e.getMessage());
-			return null;
-		}
-	}
-	
-	
-	@GetMapping("productDetails/{productId}")
-	public List<ProductDetails> getProductDetailsOfAProduct(@PathVariable Integer productId) {
-		List<ProductDetails> productDetails = new ArrayList<ProductDetails>();
-		Iterable<ProductDetails> iterable = productDetailsRepository.findByProductId(productId);
-		for (ProductDetails pd : iterable) {
-			productDetails.add(pd);
-		}
-		return productDetails;
-	}
-	
 	
 	
 }
