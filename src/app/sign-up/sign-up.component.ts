@@ -11,6 +11,8 @@ import { NavbarService } from '../shared/navbar.service';
 })
 export class SignUpComponent implements OnInit, OnDestroy {
 
+
+
   states: string[]
   user: User
   successFlag: boolean
