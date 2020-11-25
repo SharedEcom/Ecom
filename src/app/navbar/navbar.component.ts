@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../models/User';
 import { NavbarService } from '../shared/navbar.service';
 
 @Component({
@@ -8,9 +10,13 @@ import { NavbarService } from '../shared/navbar.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public navService: NavbarService) { }
+  user: User
+
+  constructor(public navService: NavbarService, public authService: AuthService) { }
 
   ngOnInit(): void {
+    this.user = this.authService.selectedUser
+    console.log(this.user)
   }
 
 }

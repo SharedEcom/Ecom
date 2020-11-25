@@ -31,7 +31,7 @@
             <button class="btn btn-secondary" type="submit"><i class="material-icons ">
                     search
                 </i></button>
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto" *ngIf="user===null || user===undefined">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="login">Login</a>
                 </li>
