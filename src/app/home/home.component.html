@@ -1,3 +1,8 @@
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-row flex-nowrap ">
+    <button type="button" class="btn btn-outline-primary m-1"*ngFor="let category of categories">{{category.categoryName}}</button>
+  </div>
+</div>
 <div class="card-columns mb-4 m-5">
   <div class="card h-100 border-warning" *ngFor="let product of products; let i = index">
     <img src="{{ product.imageUrl }}" class="card-img-top" alt="...">
@@ -9,7 +14,7 @@
       <p class="card-text text-danger" *ngIf="product.inStockQty<50 || product.inStockQty == 50">Hurry!! Only
         {{ product.inStockQty }} left in stock</p>
       <div>
-        <a class="stretched-link text-secondary" (click)="getProductById(i)" routerLink="productdetails">More
+        <a class="stretched-link text-info" (click)="getProductById(i)" routerLink="productdetails">More
           Details..</a>
       </div>
     </div>
