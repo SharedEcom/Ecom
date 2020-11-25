@@ -1,6 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="d-flex flex-row flex-nowrap ">
-    <button type="button" class="btn btn-outline-primary m-1"*ngFor="let category of categories">{{category.categoryName}}</button>
+    <button class="btn btn-outline-primary m-1"
+      *ngFor="let category of categories" (click)="getProducts(category)">{{category.categoryName}}</button>
   </div>
 </div>
 <div class="card-columns mb-4 m-5">

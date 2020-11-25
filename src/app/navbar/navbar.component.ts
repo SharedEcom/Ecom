@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Category } from '../models/Category';
 import { User } from '../models/User';
+import { CategoryService } from '../shared/categories/category.service';
 import { NavbarService } from '../shared/navbar.service';
 
 @Component({
@@ -10,9 +12,14 @@ import { NavbarService } from '../shared/navbar.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public navService: NavbarService, public authService: AuthService) { }
+  categories: Category[]
+
+  constructor(public navService: NavbarService, public authService: AuthService, public categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.categoryService.getAllCategories().subscribe((list: Category[]) => {
+      this.categories = list
+    })
   }
 
 }

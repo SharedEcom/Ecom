@@ -14,8 +14,9 @@
 
       <ul>
         <h5>Features</h5>
-        <li  *ngFor="let productdetail of productDetails" >{{productdetail.propertName}}: {{productdetail.propertyValue}}</li>
+        <li *ngFor="let productdetail of productDetails">{{productdetail.propertName}}: {{productdetail.propertyValue}}
+        </li>
       </ul>
-      <a routerLink="/" class="btn btn-success my-3">Add To Cart</a>
+      <a routerLink="/cart" class="btn btn-success my-3">Add To Cart</a>
     </div>
   </div>

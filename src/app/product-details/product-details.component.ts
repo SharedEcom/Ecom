@@ -23,9 +23,4 @@ export class ProductDetailsComponent implements OnInit {
       this.productDetails = res
     })
   }
-
-  getProductDetailById(id) {
-    console.log(id)
-  }
-
 }

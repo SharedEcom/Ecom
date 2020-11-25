@@ -10,6 +10,6 @@ export class CartService {
   constructor(public http: HttpClient) { }
 
   addItem(cart: Cart) {
-    
+    return this.http.post('http://localhost:8080/cart/add', cart)
   }
 }
