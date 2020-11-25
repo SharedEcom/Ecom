@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" *ngIf="navService.visible">
-    <a class="navbar-brand" routerLink="">Navbar</a>
+    <a class="navbar-brand" routerLink="" (click)="getAllProducts()">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
         aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" routerLink="">Home
+                <a class="nav-link" routerLink="" (click)="getAllProducts()">Home
                 </a>
             </li>
             <li class="nav-item">

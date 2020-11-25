@@ -24,10 +24,15 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  getAllProducts() {
+    this.prodService.getAllProducts().subscribe((list: Product[]) => {
+      this.prodService.products = list
+    })
+  }
+
   getProducts(category) {
     this.prodService.getProductsByCatId(category.categoryId).subscribe((res: Product[]) => {
       this.prodService.products = res
     })
   }
-
 }

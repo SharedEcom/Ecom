@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
       this.prodService.products = list
     })
 
-    this.categoryService.getAllCategories().subscribe((list:Category[])=>{
-      this.categories=list
+    this.categoryService.getAllCategories().subscribe((list: Category[]) => {
+      this.categories = list
     })
   }
 
