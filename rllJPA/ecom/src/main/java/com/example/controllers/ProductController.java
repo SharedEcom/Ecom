@@ -82,7 +82,7 @@ public class ProductController {
 		}
 	}
 
-	@GetMapping("product/category/{categoryId}")
+	@GetMapping("/product/category/{categoryId}")
 	public List<Product> getProductsOfACategory(@PathVariable Integer categoryId) {
 		List<Product> products = new ArrayList<Product>();
 		Iterable<Product> iterable = productRepository.findByCategoryId(categoryId);
