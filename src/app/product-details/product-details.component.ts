@@ -24,4 +24,8 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
+  getProductDetailById(id) {
+    console.log(id)
+  }
+
 }
