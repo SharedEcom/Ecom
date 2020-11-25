@@ -11,6 +11,13 @@
       <h6 class="my-3">MRP : {{product.mrp}}/-</h6>
       <h4>Discount: {{product.discount}}/-</h4>
       <h3>Offer Price : {{ product.mrp - product.discount }}/-</h3>
+
+      <ul>
+        <h5>Features</h5>
+        <li  *ngFor="let productdetail of productDetails" >{{productdetail.propertName}}: {{productdetail.propertyValue}}</li>
+      </ul>
+
+
       <a routerLink="/" class="btn btn-success my-3">Add To Cart</a>
     </div>
   </div>
