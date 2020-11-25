@@ -10,13 +10,9 @@ import { NavbarService } from '../shared/navbar.service';
 })
 export class NavbarComponent implements OnInit {
 
-  user: User
-
   constructor(public navService: NavbarService, public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.user = this.authService.selectedUser
-    console.log(this.user)
   }
 
 }
