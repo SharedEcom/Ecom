@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h1 class="my-4">{{ product.productBrand }}
+    <small> {{ product.productName }}</small>
+  </h1>
+    
+    <div class="row">
+  
+      
+      <div class="col-md-8">
+        
+        <img class="img-fluid" src="{{ product.imageUrl }}" alt="">
+      </div>
+  
+      <div class="col-md-4">
+        <h3 class="my-3"> Description</h3>
+        <p>{{product.productDescription}}</p>
+        <h3 class="my-3">Product Details</h3>
+        <ul>
+          <li>{{product.mrp}}</li>
+          <li>{{product.discount}}</li>
+    
+        </ul>
+      </div>
+  
+    </div>

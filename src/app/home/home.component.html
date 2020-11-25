@@ -1,14 +1,17 @@
 <div class="row row-cols-1 row-cols-md-3 m-5">
-  <div class="col mb-4" *ngFor="let product of products">
+  <div class="col mb-4" *ngFor="let product of products; let i = index">
     <div class="card h-100 border-warning ">
       <img src="{{ product.imageUrl }}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{ product.productBrand }} {{ product.productName }}</h5>
+        <h5 class="card-title" >{{ product.productBrand }} {{ product.productName }}</h5>
         <p class="card-text">{{ product.mrp }}/-</p>
         <h5 class="h5 card-text">Discount : {{ product.discount }}/-</h5>
         <h5 class="h5 card-text">Offer Price : {{ product.mrp - product.discount }}/-</h5>
         <p class="card-text text-danger" *ngIf="product.inStockQty<50 || product.inStockQty == 50">Hurry!! Only
           {{ product.inStockQty }} left in stock</p>
+          <div>
+          <a class="stretched-link text-secondary" (click)="getProductById(i)" routerLink="productdetails">More Details..</a>
+        </div>
       </div>
       <div class="card-footer d-flex justify-content-between">
         <a routerLink="/" class="btn btn-success">Buy Now</a>

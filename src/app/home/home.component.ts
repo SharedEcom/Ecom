@@ -20,4 +20,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  getProductById(id) {
+    this.prodService.selectedProduct = this.products[id]
+  }
 }

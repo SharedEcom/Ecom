@@ -9,6 +9,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: SignInComponent
+  },
+  {
+    path: 'productdetails',
+    component: ProductDetailsComponent
   }
 ]
 
@@ -31,7 +36,8 @@ export const routes: Routes = [
     SignUpComponent,
     NavbarComponent,
     SignInComponent,
-    HomeComponent
+    HomeComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
