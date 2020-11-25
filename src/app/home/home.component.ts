@@ -11,14 +11,13 @@ import { ProductService } from '../shared/products/product.service';
 })
 export class HomeComponent implements OnInit {
 
-  products: Product[]
   categories: Category[]
 
   constructor(public prodService: ProductService, public categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.prodService.getAllProducts().subscribe((list: Product[]) => {
-      this.products = list;
+      this.prodService.products = list
     })
 
     this.categoryService.getAllCategories().subscribe((list:Category[])=>{
@@ -27,10 +26,13 @@ export class HomeComponent implements OnInit {
   }
 
   getProductById(id) {
-    this.prodService.selectedProduct = this.products[id]
+    this.prodService.selectedProduct = this.prodService.products[id]
   }
 
   getProducts(category) {
-    console.log(category)
+    this.prodService.getProductsByCatId(category.categoryId).subscribe((res: Product[]) => {
+      console.log(res)
+      this.prodService.products = res
+    })
   }
 }

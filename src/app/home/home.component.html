@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class="card-columns mb-4 m-5">
-  <div class="card h-100 border-warning" *ngFor="let product of products; let i = index">
+  <div class="card h-100 border-warning" *ngFor="let product of prodService.products; let i = index">
     <img src="{{ product.imageUrl }}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ product.productBrand }} {{ product.productName }}</h5>

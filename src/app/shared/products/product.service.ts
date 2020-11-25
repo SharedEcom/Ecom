@@ -8,10 +8,15 @@ import { Product } from 'src/app/models/Product';
 export class ProductService {
 
   selectedProduct: Product
+  products: Product[]
 
   constructor(public http: HttpClient) { }
 
   getAllProducts() {
     return this.http.get('http://localhost:8080/product/all')
+  }
+
+  getProductsByCatId(id) {
+    return this.http.get('http://localhost:8080/product/category/' + id)
   }
 }
