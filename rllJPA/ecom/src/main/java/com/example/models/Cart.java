@@ -1,15 +1,15 @@
 package com.example.models;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "cart")
 public class Cart {
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cartId;
 	private Integer customerId;
 	private Integer productId;
@@ -20,9 +20,9 @@ public class Cart {
 	private String expBillDate;
 	private String expDeliveryDate;
 	private String createdOn;
-	
+
 	public Cart() {
-		
+
 	}
 
 	public Cart(Integer cartId, Integer customerId, Integer productId, Integer cartUid, Integer cartQty,
@@ -127,7 +127,5 @@ public class Cart {
 				+ ", expBillDate=" + expBillDate + ", expDeliveryDate=" + expDeliveryDate + ", createdOn=" + createdOn
 				+ "]";
 	}
-
-
 
 }

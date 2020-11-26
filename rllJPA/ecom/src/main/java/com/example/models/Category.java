@@ -5,74 +5,73 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="category")
+@Entity(name = "category")
 public class Category {
-	
-@Id	
-@GeneratedValue(strategy = GenerationType.AUTO)
-private Integer categoryId;
-private String categoryName;
-private String description;
-private Integer isActive;
-private String categoryImage;
 
-public Category() {
-}
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer categoryId;
+	private String categoryName;
+	private String description;
+	private Integer isActive;
+	private String categoryImage;
 
-public Category(Integer categoryId, String categoryName, String description, Integer isActive, String categoryImage) {
-	this.categoryId = categoryId;
-	this.categoryName = categoryName;
-	this.description = description;
-	this.isActive = isActive;
-	this.categoryImage = categoryImage;
-}
+	public Category() {
+	}
 
-public Integer getCategoryId() {
-	return categoryId;
-}
+	public Category(Integer categoryId, String categoryName, String description, Integer isActive,
+			String categoryImage) {
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+		this.description = description;
+		this.isActive = isActive;
+		this.categoryImage = categoryImage;
+	}
 
-public void setCategoryId(Integer categoryId) {
-	this.categoryId = categoryId;
-}
+	public Integer getCategoryId() {
+		return categoryId;
+	}
 
-public String getCategoryName() {
-	return categoryName;
-}
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
+	}
 
-public void setCategoryName(String categoryName) {
-	this.categoryName = categoryName;
-}
+	public String getCategoryName() {
+		return categoryName;
+	}
 
-public String getDescription() {
-	return description;
-}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 
-public void setDescription(String description) {
-	this.description = description;
-}
+	public String getDescription() {
+		return description;
+	}
 
-public Integer getIsActive() {
-	return isActive;
-}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-public void setIsActive(Integer isActive) {
-	this.isActive = isActive;
-}
+	public Integer getIsActive() {
+		return isActive;
+	}
 
-public String getCategoryImage() {
-	return categoryImage;
-}
+	public void setIsActive(Integer isActive) {
+		this.isActive = isActive;
+	}
 
-public void setCategoryImage(String categoryImage) {
-	this.categoryImage = categoryImage;
-}
+	public String getCategoryImage() {
+		return categoryImage;
+	}
 
-@Override
-public String toString() {
-	return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", description=" + description
-			+ ", isActive=" + isActive + ", categoryImage=" + categoryImage + "]";
-}
+	public void setCategoryImage(String categoryImage) {
+		this.categoryImage = categoryImage;
+	}
 
-
+	@Override
+	public String toString() {
+		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", description=" + description
+				+ ", isActive=" + isActive + ", categoryImage=" + categoryImage + "]";
+	}
 
 }
