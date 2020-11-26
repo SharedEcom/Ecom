@@ -5,18 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "product_details")
+@Entity(name="product_details")
 public class ProductDetails {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer productDetailId;
 	private Integer productId;
 	private String propertyName;
+	
 	private String propertyValue;
-
+	
 	public ProductDetails() {
-
+		
 	}
 
 	public ProductDetails(Integer productDetailId, Integer productId, String propertyName, String propertyValue) {
@@ -64,5 +65,7 @@ public class ProductDetails {
 		return "ProductDetails [productDetailId=" + productDetailId + ", productId=" + productId + ", propertyName="
 				+ propertyName + ", propertyValue=" + propertyValue + "]";
 	}
+	
+	
 
 }

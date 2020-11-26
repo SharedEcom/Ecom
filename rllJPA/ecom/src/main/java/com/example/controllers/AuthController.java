@@ -16,16 +16,16 @@ import com.example.models.Status;
 import com.example.repositories.CustomerRepository;
 
 @RestController
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE,
+@CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE,
 		RequestMethod.POST })
 public class AuthController {
 
 	@Autowired
 	private CustomerRepository customerRepository;
-
+	
 	@Autowired
 	private HttpSession httpSession;
-	
+
 	@PostMapping("/signin")
 	public Customer signIn(@RequestBody Customer customer) {
 		Customer dbCustomer = customerRepository.findByUsernameAndPassword(customer.getUsername(),
@@ -56,7 +56,6 @@ public class AuthController {
 	public Status validateUsername(@PathVariable String username) {
 
 		Customer db = customerRepository.findByUsername(username);
-		System.out.println(db);
 		if (db != null) {
 			return new Status(true);
 		}
