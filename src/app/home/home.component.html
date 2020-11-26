@@ -9,7 +9,7 @@
     <img src="{{ product.imageUrl }}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ product.productBrand }} {{ product.productName }}</h5>
-      <p class="card-text">{{ product.mrp }}/-</p>
+      <p class="card-text"><del>{{ product.mrp }}/-</del></p>
       <h5 class="h5 card-text">Discount : {{ product.discount }}/-</h5>
       <h5 class="h5 card-text">Offer Price : {{ product.mrp - product.discount }}/-</h5>
       <p class="card-text text-danger" *ngIf="product.inStockQty<50 || product.inStockQty == 50">Hurry!! Only

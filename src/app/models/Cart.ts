@@ -16,11 +16,11 @@ export class Cart {
         this.customerId = 0
         this.productId = 0
         this.cartUid = 0
-        this.cartQty = 0
+        this.cartQty = 1
         this.cartTotal = 0
         this.expShipDate = ''
         this.expBillDate = ''
         this.expDeliveryDate = ''
-        this.createdOn = null
+        this.createdOn = ''
     }
 }

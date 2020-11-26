@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import { Cart } from '../models/Cart';
-import { Product } from '../models/Product';
-import { User } from '../models/User';
 import { CartService } from '../shared/cart/cart.service';
 import { ProductService } from '../shared/products/product.service';
 
@@ -13,17 +11,44 @@ import { ProductService } from '../shared/products/product.service';
 })
 export class CartComponent implements OnInit {
 
-  user: User
-  product: Product
-  cart: Cart
+  cartProducts: any[]
+  deleteStatus: boolean
 
-  constructor(public cartService: CartService, public authService: AuthService, public prodService: ProductService) { }
+  constructor(public authService: AuthService, public cartService: CartService, public prodService: ProductService, public router: Router) { }
 
   ngOnInit(): void {
-    this.user = this.authService.selectedUser
-    this.product = this.prodService.selectedProduct
-    console.log(this.user)
-    console.log(this.product)
+    if (!this.authService.selectedUser) {
+      this.router.navigateByUrl('/login')
+    } else {
+      this.cartService.getCartByUserId().subscribe((res: any[]) => {
+        this.cartProducts = res
+        this.cartService.cart = this.cartProducts
+      })
+    }
   }
 
+  orderCart(cartProducts) {
+    console.log(cartProducts)
+    this.prodService.selectedProduct = cartProducts.product
+    console.log(this.prodService.selectedProduct)
+  }
+
+  showProduct(cartProduct) {
+    this.prodService.selectedProduct = cartProduct.product
+    this.router.navigateByUrl('/productdetails')
+  }
+
+  removeCart(cartProduct) {
+    this.deleteStatus = false
+    this.cartService.deleteCart(cartProduct.cart.cartId).subscribe((res: any) => {
+      if (res.queryStatus === true) {
+        this.deleteStatus = true
+        this.cartService.getCartByUserId().subscribe((res: any[]) => {
+          this.cartProducts = res
+        })
+      } else {
+        this.deleteStatus = false
+      }
+    })
+  }
 }

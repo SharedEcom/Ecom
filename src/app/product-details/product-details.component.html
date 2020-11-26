@@ -8,7 +8,7 @@
         <small> {{ product.productName }}</small>
       </h1>
       <p>{{product.productDescription}}</p>
-      <h6 class="my-3">MRP : {{product.mrp}}/-</h6>
+      <h6 class="my-3">MRP : <del>{{product.mrp}}/-</del></h6>
       <h4>Discount: {{product.discount}}/-</h4>
       <h3>Offer Price : {{ product.mrp - product.discount }}/-</h3>
 
@@ -17,6 +17,25 @@
         <li *ngFor="let productdetail of productDetails">{{productdetail.propertName}}: {{productdetail.propertyValue}}
         </li>
       </ul>
-      <a routerLink="/cart" class="btn btn-success my-3">Add To Cart</a>
+      <form (ngSubmit)="setQty()" #cartQtyForm="ngForm">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-success pb-0 rounded" type="button" id="button-addon1"
+              (click)="decCartQty()"><span class="material-icons">
+                remove
+              </span></button>
+          </div>
+          <input type="text" class="form-control rounded col-md-2 text-center" value="cart.cartQty" placeholder=""
+            aria-label="Example text with button addon" aria-describedby="button-addon1" maxlength="1"
+            #cartQty="ngModel" [(ngModel)]="cart.cartQty" name="cartQty">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-success pb-0 rounded" type="button" id="button-addon1"
+              [disabled]="cart.cartQty===0" (click)="incCartQty()"><span class="material-icons">
+                add
+              </span></button>
+          </div>
+        </div>
+        <a (click)="addToCart()" class="btn btn-success my-3">Add To Cart</a>
+      </form>
     </div>
   </div>

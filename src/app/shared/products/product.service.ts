@@ -16,6 +16,10 @@ export class ProductService {
     return this.http.get('http://localhost:8080/product/all')
   }
 
+  getProductById(id) {
+    return this.http.get('http://localhost:8080/product/' + id)
+  }
+
   getProductsByCatId(id) {
     return this.http.get('http://localhost:8080/product/category/' + id)
   }
