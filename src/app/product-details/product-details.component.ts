@@ -35,15 +35,19 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   setQty() {
-    
+
   }
 
   incCartQty() {
-    this.cart.cartQty++ 
+    if (this.cart.cartQty < this.product.inStockQty) {
+      this.cart.cartQty++
+    }
   }
 
   decCartQty() {
-    this.cart.cartQty--
+    if (!(this.cart.cartQty > 0)) {
+      this.cart.cartQty--
+    }
   }
 
   getCartQty() {
