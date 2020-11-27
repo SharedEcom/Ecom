@@ -13,13 +13,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.example.controllers.AuthController;
 import com.example.controllers.CartController;
 import com.example.controllers.CategoryController;
+import com.example.controllers.OrderController;
+import com.example.controllers.OrderDetailsController;
 import com.example.controllers.ProductController;
 import com.example.controllers.ProductDetailsController;
 
 @SuppressWarnings("deprecation")
 @SpringBootApplication
 @ComponentScan(basePackageClasses = { AuthController.class, CategoryController.class, ProductController.class,
-		ProductDetailsController.class, CartController.class })
+		ProductDetailsController.class, CartController.class, OrderController.class, OrderDetailsController.class })
 @EntityScan("com.example.models")
 @EnableJpaRepositories("com.example.repositories")
 public class EcomApplication {
@@ -51,26 +53,20 @@ public class EcomApplication {
 				registry.addMapping("/deleteCart/*").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/deleteCart/*").allowCredentials(true);
 
-//				registry.addMapping("/posts/add").allowedOrigins("http://localhost:4200");
-//				registry.addMapping("/posts/add").allowCredentials(true);
-//
-//				registry.addMapping("/posts/posts/update").allowedOrigins("http://localhost:4200");
-//				registry.addMapping("/posts/posts/update").allowCredentials(true);
-//
-//				registry.addMapping("/posts/delete/*").allowedOrigins("http://localhost:4200");
-//				registry.addMapping("/posts/delete/*").allowCredentials(true);
-//
-//				registry.addMapping("/posts/comments/*").allowedOrigins("http://localhost:4200");
-//				registry.addMapping("/posts/comments/*").allowCredentials(true);
-//
-//				registry.addMapping("/posts/comments/save").allowedOrigins("http://localhost:4200");
-//				registry.addMapping("/posts/comments/save").allowCredentials(true);
-//
-//				registry.addMapping("/posts/comments/edit").allowedOrigins("http://localhost:4200");
-//				registry.addMapping("/posts/comments/edit").allowCredentials(true);
-//
-//				registry.addMapping("/posts/comments/delete/*").allowedOrigins("http://localhost:4200");
-//				registry.addMapping("/posts/comments/delete/*").allowCredentials(true);
+				registry.addMapping("/order/add").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/order/add").allowCredentials(true);
+				
+				registry.addMapping("/order/all").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/order/all").allowCredentials(true);
+				
+				registry.addMapping("/orderDetails/add").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/orderDetails/add").allowCredentials(true);
+				
+				registry.addMapping("/orderDetails/*").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/orderDetails/*").allowCredentials(true);
+				
+				registry.addMapping("/product/update").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/product/update").allowCredentials(true);
 			}
 		};
 	}

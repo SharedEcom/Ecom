@@ -22,7 +22,7 @@ public class AuthController {
 
 	@Autowired
 	private CustomerRepository customerRepository;
-	
+
 	@Autowired
 	private HttpSession httpSession;
 
@@ -49,7 +49,6 @@ public class AuthController {
 			System.out.println("Inside catch");
 			return null;
 		}
-
 	}
 
 	@GetMapping("/validate/{username}")
@@ -63,7 +62,16 @@ public class AuthController {
 		else {
 			return new Status(false);
 		}
+	}
 
+	@PostMapping("/signout")
+	public Status logout() {
+
+		if (httpSession != null && httpSession.getAttribute("customerId") != null) {
+			httpSession.invalidate();
+			return new Status(true);
+		}
+		return new Status(false);
 	}
 
 }

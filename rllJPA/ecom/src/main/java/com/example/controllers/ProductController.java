@@ -20,7 +20,7 @@ import com.example.models.Status;
 import com.example.repositories.ProductRepository;
 
 @RestController
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE,
+@CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE,
 		RequestMethod.POST })
 public class ProductController {
 
