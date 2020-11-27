@@ -142,6 +142,7 @@ export class CartComponent implements OnInit {
         })
       }
     })
+    
   }
 
   // Update Product Qty
