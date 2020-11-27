@@ -11,6 +11,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +33,10 @@ export const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'orderlist',
+    component: OrderListComponent 
   }
 ]
 
@@ -43,7 +48,8 @@ export const routes: Routes = [
     SignInComponent,
     HomeComponent,
     ProductDetailsComponent,
-    CartComponent
+    CartComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
