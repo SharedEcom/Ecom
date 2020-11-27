@@ -35,7 +35,7 @@ export const routes: Routes = [
     component: CartComponent
   },
   {
-    path: 'orderlist',
+    path: 'order-list',
     component: OrderListComponent 
   }
 ]

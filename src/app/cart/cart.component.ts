@@ -94,9 +94,11 @@ export class CartComponent implements OnInit {
         this.deleteStatus = true
         this.cartService.getCartByUserId().subscribe((res: any[]) => {
           this.cartProducts = res
+          this.calcValues(res)
         })
       } else {
         this.deleteStatus = false
+        this.calcValues(res)
       }
     })
   }
@@ -142,7 +144,7 @@ export class CartComponent implements OnInit {
         })
       }
     })
-    
+
   }
 
   // Update Product Qty

@@ -14,8 +14,6 @@ const httpOptions = {
 })
 export class OrderService {
 
-  order: Order
-
   constructor(public http: HttpClient) { }
 
   createOrder(order: Order) {
