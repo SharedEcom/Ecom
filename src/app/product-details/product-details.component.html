@@ -35,7 +35,15 @@
               </span></button>
           </div>
         </div>
-        <a (click)="addToCart()" class="btn btn-success my-3">Add To Cart</a>
+        <a (click)="addToCart()" id="btnShow" class="btn btn-success my-3" data-toggle="modal" data-target="#myModal">Add To Cart</a>
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+              <div class="alert alert-success alert-dismissible">
+                  <a  class="close" data-dismiss="modal" aria-label="close">&times;</a>
+                  <strong>Success!</strong> This item is added to Your cart!! 
+                </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>
