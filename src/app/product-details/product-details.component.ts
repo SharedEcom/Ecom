@@ -69,8 +69,8 @@ export class ProductDetailsComponent implements OnInit {
         this.cart.cartUid = this.product.productId + new Date().getDate() + (new Date().getMonth() + 1) + new Date().getFullYear()
         this.cart.cartTotal = this.cart.cartQty * (this.product.mrp - this.product.discount)
         this.cart.expShipDate = this.newDate(5)
-        this.cart.expBillDate = this.newDate(8)
-        this.cart.expDeliveryDate = this.newDate(9)
+        this.cart.expBillDate = this.newDate(9)
+        this.cart.expDeliveryDate = this.newDate(8)
         this.cart.createdOn = this.newDate(0)
         this.cartService.addToCart(this.cart).subscribe((res: Cart) => {
           this.addedToCart = true
