@@ -1,0 +1,101 @@
+
+<div class="container my-5 p-5 border border-primary rounded p-5 shadow-lg bg-white">
+<table class="table table-hover">
+    <thead>
+        <tr class="table-active openmodal" data-toggle="modal" data-target="#modal1" >
+
+            <th>Your Orders</th>
+            <th>Order Date</th>
+            <th>Net Amount</th>
+            <th>Status</th>
+
+        </tr>
+        
+    </thead>
+    <tbody>
+        <tr class="table-warning">
+            <td><button type="button" class="btn btn-outline-primary openmodal"
+                data-toggle="modal" data-target="#modal1"> Order 3</button>
+                <div class="modal fade" id="modal1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">My Orders</h4> <button type="button" class="close"
+                                    data-dismiss="modal">&times;</button>
+                            </div> <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="container">
+                                    <h6>Item Details</h6>
+        
+                                    <div class="border border-warning p-5 shadow-lg bg-white">
+                                        <div class="row">
+                                            <div class="col"> <img class="img-fluid" src="https://i.imgur.com/iItpzRh.jpg">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <ul type="none">
+                                                    <li>Price: 20000/-</li>
+                                                    <li>Quantity:1</li>
+                                                    <li>Discount:1500/-</li>
+                                                    <li>Offer Price:18500/-</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class=" m-2">
+                                        <h6>Order Details</h6>
+                                        <div class="row ">
+                                            <div class="col-xs-6">
+                                                <ul type="none">
+                                                    <li class="left">Order number:</li>
+                                                    <li class="left">Order Date:</li>
+                                                    <li class="left">Amount:</li>
+                                                    <li class="left">Shipping:</li>
+                                                    <li class="left">Total Amount:</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-xs-6 ">
+                                                <ul class="right" type="none">
+                                                    <li class="right">#BBRT-3456981</li>
+                                                    <li class="right">19-03-2020</li>
+                                                    <li class="right">20000</li>
+                                                    <li class="right">300</li>
+                                                    <li class="right">20300</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <h6>Shipping Address</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Address
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <!-- Modal footer -->
+                            <div class="modal-footer"> <button type="button" class="btn btn-outline-primary">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>  
+            <td>23 nov</td>
+            <td>453535/-</td>
+            <td>Pending</td>
+        </tr>
+
+        <!-- One more row for referencee -->
+        <tr class="table-warning">
+            <td><button type="button" class="btn btn-outline-primary openmodal"
+                data-toggle="modal" data-target="#modal1"> Order 2</button></td>
+            <td>24 nov</td>
+            <td>23425/-</td>
+            <td>Delivered</td>
+        </tr>
+                 
+    </tbody>
+</table>
+</div>
