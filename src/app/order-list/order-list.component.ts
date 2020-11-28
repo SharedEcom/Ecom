@@ -12,7 +12,7 @@ import { OrderService } from '../shared/orders/order.service';
 export class OrderListComponent implements OnInit {
 
   orders: any[]
-  order: any[]
+  currentOrder: any[]
   orderDetails: any[]
   orderDate: string
 
@@ -25,24 +25,30 @@ export class OrderListComponent implements OnInit {
     } else {
       this.orderService.getAllOrdersByCustomer().subscribe((res: any[]) => {
         this.orders = res
-        console.log(this.orders)
+        console.log('orders:', this.orders)
 
         for (let order of this.orders) {
           let date = (order.order.orderDate)
           let newDate = (date.split(' ')[0])
-          this.orderDate = (newDate.split('-')[2] + '-' + newDate.split('-')[1] + '-' + newDate.split('-')[0])
+          order.order.orderDate = (newDate.split('-')[2] + '-' + newDate.split('-')[1] + '-' + newDate.split('-')[0])
+        }
+
+        for (let order of this.orders) {
+          let date = (order.order.deliveryDate)
+          let newDate = (date.split(' ')[0])
+          order.order.deliveryDate = (newDate.split('-')[2] + '-' + newDate.split('-')[1] + '-' + newDate.split('-')[0])
         }
       });
     }
   }
 
-  getOrderDetails(orderId) {
-    this.order = this.orders[orderId]
-    console.log(this.order)
-    // this.orderDetailService.getOrderDetails(this.order.order.orderId).subscribe((res: any[]) => {
-    //   this.orderDetails = res
-    //   console.log(this.orderDetails)
-    // })
+  getOrderDetails(order) {
+    this.currentOrder = order
+    console.log('current order', this.currentOrder)
+    this.orderDetailService.getOrderDetails(order.orderId).subscribe((res: any[]) => {
+      this.orderDetails = res
+      console.log(this.orderDetails)
+    })
   }
 
 }

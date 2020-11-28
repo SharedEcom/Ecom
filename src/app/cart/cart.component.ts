@@ -41,17 +41,32 @@ export class CartComponent implements OnInit {
     } else {
       this.cartService.getCartByUserId().subscribe((res: any[]) => {
         this.cartProducts = res
+        for (let cartProduct of this.cartProducts) {
+          let date = (cartProduct.cart.expShipDate)
+          let newDate = (date.split(' ')[0])
+          cartProduct.cart.expShipDate = (newDate.split('-')[2] + '-' + newDate.split('-')[1] + '-' + newDate.split('-')[0])
+        }
+        for (let cartProduct of this.cartProducts) {
+          let date = (cartProduct.cart.expDeliveryDate)
+          let newDate = (date.split(' ')[0])
+          cartProduct.cart.expDeliveryDate = (newDate.split('-')[2] + '-' + newDate.split('-')[1] + '-' + newDate.split('-')[0])
+        }
         this.cartService.cart = this.cartProducts
-        this.calcValues(res)
+        
       })
     }
   }
 
-  // calculating values for modal
-  calcValues(cartProducts) {
+  calcTotal(cartProducts) {
+    this.cartTotal = 0
     for (let cartProduct of Object.keys(cartProducts)) {
       this.cartTotal = this.cartTotal + (cartProducts[cartProduct].cart.cartTotal)
+      this.calcValues()
     }
+  }
+
+  // calculating values for modal
+  calcValues() {
     this.shippingCharges = Math.round((this.cartTotal * 0.5) / 100)
     this.totalAmount = this.shippingCharges + this.cartTotal
     this.displayOrderDate = new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()
@@ -94,11 +109,9 @@ export class CartComponent implements OnInit {
         this.deleteStatus = true
         this.cartService.getCartByUserId().subscribe((res: any[]) => {
           this.cartProducts = res
-          this.calcValues(res)
         })
       } else {
         this.deleteStatus = false
-        this.calcValues(res)
       }
     })
   }

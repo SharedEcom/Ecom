@@ -17,23 +17,20 @@
                     <small class="ml-3 card-text">Expected Delivery Date: {{ cartProduct.cart.expDeliveryDate }}</small>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-4 mb-3">
                 <h6 class="my-3">MRP : <del>{{cartProduct.product.mrp}}/-</del></h6>
                 <h4 class="my-3 text-success">Discount: {{ cartProduct.product.discount }}/-</h4>
                 <h3 class="mt-3">Offer Price: {{ cartProduct.product.mrp  - cartProduct.product.discount}}/- Only</h3>
                 <h4 class="my-3">Total: {{ cartProduct.cart.cartTotal }}/-</h4>
+                <a (click)="removeCart(cartProduct)" class="btn btn-danger mb-2 mr-3"><span class="material-icons">
+                        delete </span>Remove From Cart</a>
             </div>
-        </div>
-
-        <div class="d-flex justify-content-end mr-5">
-            <a (click)="removeCart(cartProduct)" class="btn btn-danger mb-2 mr-3"><span class="material-icons mb-2">
-                    delete
-                </span>Remove From Cart</a>
         </div>
     </div>
     <div class="container d-flex justify-content-center mt-100">
         <!-- Button to Open the Modal --> <button type="button" class="btn btn-outline-primary openmodal m-5"
-            data-toggle="modal" data-target="#modal1"> Click here to see your Order </button> <!-- The Modal -->
+            data-toggle="modal" data-target="#modal1" (click)="calcTotal(cartProducts)"> Click here to see your Order
+        </button> <!-- The Modal -->
         <div class="modal fade" id="modal1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -85,12 +82,12 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <hr />
                             <h6>Shipping Address</h6>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                 <label class="form-check-label" for="defaultCheck1">
-                                    Address
+                                    Same as Permanent Address?
                                 </label>
                             </div>
                         </div>

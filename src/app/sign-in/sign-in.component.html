@@ -17,7 +17,8 @@
                 <small class="form-text text-danger" *ngIf="password.dirty && password.invalid">Password can't
                     be empty</small>
             </div>
-            <button type="submit" class="btn btn-dark form-group form-control"
+            <!-- <small class="form-text text-danger text-center" *ngIf="errorFlag"><b>Invalid Credentials</b></small> -->
+            <button type="submit" class="btn btn-dark form-group form-control mt-3"
                 [disabled]="loginForm.pristine || loginForm.invalid">Login</button>
             <hr />
             <div class="form-group text-center"><a routerLink="/register"

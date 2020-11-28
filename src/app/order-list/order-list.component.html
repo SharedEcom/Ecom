@@ -1,94 +1,126 @@
-<div class="container my-5 p-5 border border-primary rounded p-5 shadow-lg bg-white">
-    <table class="table table-hover">
-        <thead>
-            <tr class="table-active openmodal" data-toggle="modal" data-target="#modal1">
-                <th>Your Orders</th>
-                <th>Order Date</th>
-                <th>Net Amount</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="table-warning" *ngFor="let order of orders; let i = index">
-                <td><button type="button" class="btn btn-outline-primary openmodal" data-toggle="modal"
-                        data-target="#modal1"
-                        (click)="getOrderDetails(i)">#ORD-{{ order.order.orderNumber }}</button>
-                </td>
-                <td>{{ orderDate }}</td>
-                <td>{{ order.order.invoiceAmount }}/-</td>
-                <td *ngIf="order.order.transStatus==='SUCCESS'">Delivered</td>
-                <td *ngIf="!order.order.transStatus==='SUCCESS'">Delivering</td>
-            </tr>
-        </tbody>
-    </table>
+<!-- <div class="container my-5 p-5 border border-primary rounded p-5 shadow-lg bg-white">
+    <div id="accordion">
+        <div class="card m-5">
+            <div class="card-header" id="heading">
 
-    <div class="modal fade" id="modal1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">My Orders</h4> <button type="button" class="close"
-                        data-dismiss="modal">&times;</button>
-                </div> <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="container">
-                        <h6>Item Details</h6>
-
-                        <div class="border border-warning p-5 shadow-lg bg-white" *ngFor="let orderDetail of orderDetails">
+                <div class="row">
+                    <div class="col-sm">
+                        <button class="btn btn-primary btn-sm" data-toggle="collapse1" data-target="#collapse1"
+                            aria-expanded="false" aria-controls="collapse1">
+                            Order Number 1
+                        </button>
+                    </div>
+                    <div class="col-sm">
+                        Total Amount
+                    </div>
+                    <div class="col-sm">
+                        Order Date:
+                    </div>
+                    <div class="col-sm">
+                        Delivery Date:
+                    </div>
+                    <div class="col-sm">
+                        Transaction status:
+                    </div>
+                </div>
+                <div id="collapse1" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="container">
                             <div class="row">
-                                <div class="col"> <img class="img-fluid" src="https://i.imgur.com/iItpzRh.jpg">
-                                </div>
-                                <div class="col-xs-6">
-                                    <ul type="none">
-                                        <li>Price: {{ orderDetail.product.mrp }}/-</li>
-                                        <li>Quantity: {{ orderDetail.orderDetails.unitQty }}</li>
-                                        <li>Discount: {{ orderDetail.orderDetails.discount }}/-</li>
-                                        <li>Offer Price: {{ orderDetail.orderDetails.total }}/-</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                                <div class="col-sm">
+                                    Product Name, Brand <br>
+                                    Category <br>
+                                    Quantity <br>
+                                    Price
 
-                        <div class=" m-2">
-                            <h6>Order Details</h6>
-                            <div class="row ">
-                                <div class="col-xs-6">
-                                    <ul type="none">
-                                        <li class="left">Order number:</li>
-                                        <li class="left">Order Date:</li>
-                                        <li class="left">Payment Mode:</li>
-                                        <li class="left">Shipper:</li>
-                                        <li class="left">Total Amount:</li>
-                                    </ul>
                                 </div>
-                                <div class="col-xs-6 ">
-                                    <ul class="right" type="none">
-                                        <!-- <li class="right">#ORD-{{ orders.order.orderNumber }}</li>
-                                        <li class="right">{{ orderDate }}</li>
-                                        <li class="right">{{ orders.payment.paymentType }}</li>
-                                        <li class="right">{{ orders.shipper.companyName }} - +91 {{ orders.shipper.shipperContact }}</li>
-                                        <li class="right">{{ orders.invoiceAmount }}</li> -->
-                                        <!-- {{ order | json }} -->
-                                        <li class="right">#ORD-order.order.orderNumber</li>
-                                        <li class="right"> orderDate</li>
-                                        <li class="right"> orders.payment.paymentType</li>
-                                        <li class="right"> orders.shipper.companyName - +91  orders.shipper.shipperContact</li>
-                                        <li class="right"> orders.invoiceAmount</li>
-                                    </ul>
+                                <div class="col-sm">
+                                    Supplier Company <br>
+                                    Supplier City, State <br>
+                                    Payment Mode <br>
+                                    Shipper Details
+                                </div>
+                                <div class="col-sm">
+                                    <img class="img-fluid" src="https://i.imgur.com/iItpzRh.jpg">
                                 </div>
                             </div>
-                        </div>
-                        <hr />
-                        <h6>Shipping Address</h6>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Address
-                            </label>
                         </div>
                     </div>
-                </div> <!-- Modal footer -->
-                <div class="modal-footer"> <button type="button" class="btn btn-outline-primary">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="accordion my-5" id="accordionExample" *ngFor="let order of orders; let i = index">
+    <div class="card border-primary">
+        <div class="card-header" id="headingOne">
+            <div class="row-sm">
+                <div class="col-sm">
+                    <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#orderNum-{{i}}"
+                        aria-expanded="false" aria-controls="orderNum-{{i}}" (click)="getOrderDetails(order.order)">
+                        #ORD-{{ order.order.orderNumber }}
+                    </button>
+                </div>
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm">
+                            Order Amount
+                        </div>
+                        <div class="col-sm">
+                            Order Date
+                        </div>
+                        <div class="col-sm">
+                            Delivery Date
+                        </div>
+                        <div class="col-sm">
+                            Transaction Status
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            {{ order.order.invoiceAmount }}/-
+                        </div>
+                        <div class="col-sm">
+                            {{ order.order.orderDate }}
+                        </div>
+                        <div class="col-sm">
+                            {{ order.order.deliveryDate }}
+                        </div>
+                        <div class="col-sm" *ngIf="order.order.transStatus==='SUCCESS'">
+                            Fully Paid
+                        </div>
+                        <div class="col-sm" *ngIf="order.order.transStatus!=='SUCCESS'">
+                            Not-Paid
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mx-3 my-2 border-primary" *ngFor="let orderDetail of orderDetails">
+            <div id="orderNum-{{i}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                {{ orderDetail.product.productBrand }} {{ orderDetail.product.productName }}  <br><br>
+                                Category: {{ orderDetail.category.categoryName }} <br><br>
+                                Buy Price: {{ orderDetail.orderDetails.unitQty }} <br><br>
+                                {{ orderDetail.orderDetails.total }}
+
+                            </div>
+                            <div class="col-sm">
+                                Supplier: {{ orderDetail.supplier.companyName }} <br><br>
+                                {{ orderDetail.supplier.city }}, {{ orderDetail.supplier.state }} <br><br>
+                                Payment Mode: {{ order.payment.paymentType }} <br><br>
+                                Shipper: {{ order.shipper.companyName }}
+                            </div>
+                            <div class="col-sm">
+                                <img class="img-fluid" src="https://i.imgur.com/iItpzRh.jpg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

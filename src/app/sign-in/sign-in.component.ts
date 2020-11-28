@@ -18,6 +18,7 @@ export class SignInComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public router: Router, public navService: NavbarService) {
     navService.hide()
     this.user = new User()
+    this.errorFlag = false
   }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.errorFlag = false
 
     this.authService.signin(this.user).subscribe((res: User) => {
-      if (res === null || res === undefined) {
+      if (res === null || res === undefined || !res) {
         // LOGIN FAILED
         this.errorFlag = true
         setTimeout(() => {
