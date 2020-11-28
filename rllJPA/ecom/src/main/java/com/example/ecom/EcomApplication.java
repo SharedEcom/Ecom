@@ -41,30 +41,33 @@ public class EcomApplication {
 				registry.addMapping("/signup").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/signup").allowCredentials(true);
 
-//				registry.addMapping("/posts/signout").allowedOrigins("http://localhost:4200");
-//				registry.addMapping("/posts/signout").allowCredentials(true);
+				registry.addMapping("/updateProfile").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/updateProfile").allowCredentials(true);
+
+				registry.addMapping("/signout").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/signout").allowCredentials(true);
 
 				registry.addMapping("/cart/add").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/cart/add").allowCredentials(true);
-				
+
 				registry.addMapping("/cart/all").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/cart/all").allowCredentials(true);
-				
+
 				registry.addMapping("/deleteCart/*").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/deleteCart/*").allowCredentials(true);
 
 				registry.addMapping("/order/add").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/order/add").allowCredentials(true);
-				
+
 				registry.addMapping("/order/all").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/order/all").allowCredentials(true);
-				
+
 				registry.addMapping("/orderDetails/add").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/orderDetails/add").allowCredentials(true);
-				
+
 				registry.addMapping("/orderDetails/*").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/orderDetails/*").allowCredentials(true);
-				
+
 				registry.addMapping("/product/update").allowedOrigins("http://localhost:4200");
 				registry.addMapping("/product/update").allowCredentials(true);
 			}

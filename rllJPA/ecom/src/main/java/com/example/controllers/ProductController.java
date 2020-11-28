@@ -91,5 +91,15 @@ public class ProductController {
 		}
 		return products;
 	}
+	
+	@GetMapping("/product/search/{keyword}")
+	public List<Product> searchProduct(@PathVariable String keyword) {
+		try {
+			return productRepository.searchProducts(keyword);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
 
 }
