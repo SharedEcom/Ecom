@@ -1,7 +1,7 @@
 <div class="my-5">
     <form class="d-flex flex-row justify-content-center align-items-center p-2" (ngSubmit)="registerSubmit()"
         #registerForm="ngForm">
-        <div class="border border-dark rounded p-5 shadow-lg bg-white">
+        <div class="border border-primary rounded p-5 bg-white rounded"  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
             <h3 class="h3 text-center mb-5">Registration</h3>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -105,11 +105,11 @@
                         must have 6 digits</small>
                 </div>
             </div>
-            <button type="submit" class="btn btn-dark form-group form-control mt-3"
+            <button type="submit" class="btn btn-primary form-group form-control mt-3"
                 [disabled]="registerForm.pristine || registerForm.invalid">Register</button>
             <hr />
             <div class="form-group text-center"><a routerLink="/login"
-                    class="d-flex justify-content-center text-dark">Existing User? Login Here</a></div>
+                    class="d-flex justify-content-center text-primary">Existing User? Login Here</a></div>
         </div>
     </form>
 </div>
