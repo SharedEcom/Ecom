@@ -1,7 +1,7 @@
 <div class="my-3 vertical-center d-flex justify-content-center">
     <form class="d-flex flex-row justify-content-center align-items-center p-2" (ngSubmit)="loginSubmit()"
         #loginForm="ngForm" *ngIf="!successFlag && !errorFlag">
-        <div class="border border-dark rounded p-5 shadow-lg bg-white rounded">
+        <div class="border border-primary rounded p-5 bg-white rounded" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
             <h3 class="h3 text-center mb-5">Login</h3>
             <div class="form-group">
                 <label for="loginUsername"><b>Username</b></label>
@@ -18,11 +18,11 @@
                     be empty</small>
             </div>
             <!-- <small class="form-text text-danger text-center" *ngIf="errorFlag"><b>Invalid Credentials</b></small> -->
-            <button type="submit" class="btn btn-dark form-group form-control mt-3"
+            <button type="submit" class="btn btn-primary form-group form-control mt-3"
                 [disabled]="loginForm.pristine || loginForm.invalid">Login</button>
             <hr />
             <div class="form-group text-center"><a routerLink="/register"
-                    class="d-flex justify-content-center text-dark">New User? Click here to Register</a></div>
+                    class="d-flex justify-content-center text-primary">New User? Click here to Register</a></div>
         </div>
     </form>
 

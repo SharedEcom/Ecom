@@ -1,11 +1,11 @@
 <div class="d-flex justify-content-center">
   <div class="d-flex flex-row flex-nowrap ">
-    <a class="btn btn-outline-primary m-1" 
+    <a class="btn btn-outline-primary m-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
       *ngFor="let category of categories" (click)="getProducts(category)">{{category.categoryName}}</a>
   </div>
 </div>
-<div class="card-columns mb-4 m-5">
-  <div class="card h-100 border-warning" *ngFor="let product of prodService.products; let i = index">
+<div class="card-columns mb-4 m-4">
+  <div class="card h-100 "  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" *ngFor="let product of prodService.products; let i = index">
     <img src="{{ product.imageUrl }}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ product.productBrand }} {{ product.productName }}</h5>
