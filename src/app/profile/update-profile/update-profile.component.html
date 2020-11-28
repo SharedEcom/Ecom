@@ -1,0 +1,144 @@
+<div class="my-5">
+    <form class="d-flex flex-row justify-content-center align-items-center p-2" (ngSubmit)="updateProfile()"
+        #registerForm="ngForm">
+        <div class="border border-dark rounded p-5 shadow-lg bg-white">
+            <h3 class="h3 text-center mb-5">Registration</h3>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
+                        #firstName="ngModel" [(ngModel)]="user.firstName" required>
+                    <small class="form-text text-danger" *ngIf="firstName.dirty && firstName.invalid">First Name
+                        can't be empty</small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"
+                        #lastName="ngModel" [(ngModel)]="user.lastName">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="userUsername">Username</label>
+                    <input type="email" class="form-control" id="userUsername" name="userUsername"
+                        placeholder="Username" #username="ngModel" [(ngModel)]="user.username" required readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="userPassword">Password</label>
+                    <input type="password" class="form-control" id="userPassword" name="userPassword"
+                        placeholder="Password" #password="ngModel" [(ngModel)]="user.password" required>
+                    <small class="form-text text-danger" *ngIf="password.dirty && password.invalid">Password
+                        can't be empty</small>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="userContact">Contact Number</label>
+                    <input type="text" class="form-control" id="userContact" name="userContact" placeholder="XXXXXXXXXX"
+                        #customerPhone="ngModel" [(ngModel)]="user.customerPhone" minlength=10 maxlength=10 required>
+                    <small class="form-text text-danger" *ngIf="customerPhone.dirty && customerPhone.invalid">Contact
+                        must have 10 digits</small>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="userEmail">Email Address</label>
+                    <input type="text" class="form-control" id="userEmail" name="userEmail"
+                        placeholder="someone@email.com" #customerEmail="ngModel" [(ngModel)]="user.customerEmail"
+                        required>
+                    <small class="form-text text-danger" *ngIf="customerEmail.dirty && customerEmail.invalid ">Email
+                        can't be empty</small>
+                </div>
+            </div>
+            <label class="mt-2">Permanent Address</label>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="userFlat">Flat/House Number</label>
+                    <input type="text" class="form-control" id="userFlat" name="userFlat" placeholder="Flat/House No."
+                        #flatNumber="ngModel" [(ngModel)]="user.flatNumber" required>
+                    <small class="form-text text-danger" *ngIf="flatNumber.dirty && flatNumber.invalid">Flat No.
+                        can't be empty</small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="userBuilding">Building</label>
+                    <input type="text" class="form-control" id="userBuilding" name="userBuilding"
+                        placeholder="Building Name" #customerBuilding="ngModel" [(ngModel)]="user.customerBuilding"
+                        required>
+                    <small class="form-text text-danger"
+                        *ngIf="customerBuilding.dirty && customerBuilding.invalid">Building name
+                        can't be empty</small>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="userAddress">Address</label>
+                <input type="text" class="form-control" id="userAddress" placeholder="Locality" name="userAddress"
+                    #customerAddress="ngModel" [(ngModel)]="user.customerAddress" required>
+                <small class="form-text text-danger" *ngIf="customerAddress.dirty && customerAddress.invalid">Address
+                    can't be empty</small>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="userCity">City</label>
+                    <input type="text" class="form-control" id="userCity" name="userCity" placeholder="Some City"
+                        #customerCity="ngModel" [(ngModel)]="user.customerCity" required>
+                    <small class="form-text text-danger" *ngIf="customerCity.dirty && customerCity.invalid">City
+                        can't be empty</small>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="userState">State</label>
+                    <select id="userState" class="form-control" name="userState" #customerState="ngModel"
+                        [(ngModel)]="user.customerState">
+                        <option selected disabled>Choose...</option>
+                        <option *ngFor="let state of states">{{ state }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="userPostalCode">ZIP</label>
+                    <input type="text" class="form-control" id="userPostalCode" name="userPostalCode"
+                        placeholder="xxx-xxx" #postalCode="ngModel" [(ngModel)]="user.postalCode" minlength=6
+                        maxlength=6 required>
+                    <small class="form-text text-danger" *ngIf="postalCode.dirty && postalCode.invalid">Postal Code
+                        must have 6 digits</small>
+                </div>
+            </div>
+            <label class="mt-2">Shipping Address</label>
+            <div class="form-group">
+                <label for="userShipAddress">Address</label>
+                <input type="text" class="form-control" id="userShipAddress" placeholder="Locality"
+                    name="userShipAddress" #shippingAddress="ngModel" [(ngModel)]="user.shippingAddress" required>
+                <small class="form-text text-danger" *ngIf="shippingAddress.dirty && shippingAddress.invalid">Address
+                    can't be empty</small>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="userShipCity">City</label>
+                    <input type="text" class="form-control" id="userShipCity" name="userShipCity"
+                        placeholder="Some City" #shippingCity="ngModel" [(ngModel)]="user.shippingCity" required>
+                    <small class="form-text text-danger" *ngIf="shippingCity.dirty && shippingCity.invalid">City
+                        can't be empty</small>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="userShipState">State</label>
+                    <select id="userShipState" class="form-control" name="userShipState" #shippingState="ngModel"
+                        [(ngModel)]="user.shippingState">
+                        <option selected disabled>Choose...</option>
+                        <option *ngFor="let state of states">{{ state }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="userShipPostalCode">ZIP</label>
+                    <input type="text" class="form-control" id="userShipPostalCode" name="userShipPostalCode"
+                        placeholder="xxx-xxx" #shippingCode="ngModel" [(ngModel)]="user.shippingCode" minlength=6
+                        maxlength=6 required>
+                    <small class="form-text text-danger" *ngIf="shippingCode.dirty && shippingCode.invalid">Postal
+                        Code
+                        must have 6 digits</small>
+                </div>
+            </div>
+            <div class="form-row">
+                <button type="submit" class="btn btn-primary form-group form-control mt-3"
+                    [disabled]="registerForm.pristine || registerForm.invalid">Update Profile</button>
+            </div>
+        </div>
+    </form>
+</div>

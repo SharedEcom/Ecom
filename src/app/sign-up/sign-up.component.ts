@@ -95,6 +95,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.successFlag = false
     this.errorFlag = false
 
+    this.user.shippingAddress = this.user.flatNumber + this.user.customerBuilding + this.user.customerAddress
+    this.user.shippingCity = this.user.customerCity
+    this.user.shippingState = this.user.customerState
+    this.user.shippingCode = this.user.postalCode
+    this.user.shippingCountry = this.user.customerCountry
+
     this.authService.signup(this.user).subscribe(res => {
       if (res === null || res === undefined) {
         // REGISTER FAILED

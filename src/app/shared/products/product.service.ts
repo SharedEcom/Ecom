@@ -34,4 +34,8 @@ export class ProductService {
   updateProduct(product) {
     return this.http.put('http://localhost:8080/product/update', product, httpOptions)
   }
+
+  searchProducts(keyword) {
+    return this.http.get('http://localhost:8080/product/search/' + keyword)
+  }
 }

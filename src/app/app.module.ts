@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
   {
     path: 'order-list',
     component: OrderListComponent 
+  },
+  {
+    path: 'update-profile',
+    component: UpdateProfileComponent
   }
 ]
 
@@ -49,7 +54,8 @@ export const routes: Routes = [
     HomeComponent,
     ProductDetailsComponent,
     CartComponent,
-    OrderListComponent
+    OrderListComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

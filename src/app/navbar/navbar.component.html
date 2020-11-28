@@ -20,11 +20,16 @@
                 </div>
             </li>
         </ul>
+        <input class="form-control mr-sm-2 mx-5" type="text" placeholder="Search Product" #searchText>
+        <button class="btn btn-white bg-white py-1 mr-5" type="submit" (click)="searchProduct(searchText)"><i
+                class="material-icons ">
+                search
+            </i></button>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search">
             <button class="btn btn-secondary" type="submit"><i class="material-icons ">
                     search
-                </i></button>
+                </i></button> -->
             <ul class="navbar-nav mr-auto" *ngIf="!authService.selectedUser">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="login">Login</a>
@@ -38,11 +43,11 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">{{ authService.selectedUser.firstName }}</a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" routerLink="/cart">Cart</a>
-                        <a class="dropdown-item" routerLink="/order-list">Orders</a>
-                        <a class="dropdown-item" routerLink="">Update Profile</a>
+                        <a class="dropdown-item" routerLink="/cart">My Cart</a>
+                        <a class="dropdown-item" routerLink="/order-list">My Orders</a>
+                        <a class="dropdown-item" routerLink="/update-profile">Update Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" routerLink="">Logout</a>
+                        <a class="dropdown-item" (click)="logout()">Logout</a>
                     </div>
                 </li>
             </ul>

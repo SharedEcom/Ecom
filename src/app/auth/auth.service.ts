@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/User';
 
 const httpOptions = {
-  headers: new HttpHeaders ({
+  headers: new HttpHeaders({
     'Authorization': 'someToken'
   }),
   withCredentials: true
@@ -28,6 +28,14 @@ export class AuthService {
 
   checkUsername(username: string): any {
     return this.http.get('http://localhost:8080/validate/' + username, httpOptions)
+  }
+
+  signout(user) {
+    return this.http.post('http://localhost:8080/signout', user, httpOptions)
+  }
+
+  updateProfile(user) {
+    return this.http.put('http://localhost:8080/updateProfile', user, httpOptions)
   }
 
 }

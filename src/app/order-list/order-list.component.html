@@ -52,7 +52,7 @@
     </div>
 </div> -->
 
-<div class="accordion my-5" id="accordionExample" *ngFor="let order of orders; let i = index">
+<!-- <div class="accordion my-5" id="accordionExample">
     <div class="card border-primary">
         <div class="card-header" id="headingOne">
             <div class="row-sm">
@@ -103,11 +103,11 @@
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm">
+                            <div class="col-sm font-weight-bold">
                                 {{ orderDetail.product.productBrand }} {{ orderDetail.product.productName }}  <br><br>
                                 Category: {{ orderDetail.category.categoryName }} <br><br>
-                                Buy Price: {{ orderDetail.orderDetails.unitQty }} <br><br>
-                                {{ orderDetail.orderDetails.total }}
+                                Quantity: {{ orderDetail.orderDetails.unitQty }} <br><br>
+                                Buy Price: {{ orderDetail.orderDetails.total }}/-
 
                             </div>
                             <div class="col-sm">
@@ -117,10 +117,95 @@
                                 Shipper: {{ order.shipper.companyName }}
                             </div>
                             <div class="col-sm">
-                                <img class="img-fluid" src="https://i.imgur.com/iItpzRh.jpg">
+                                <img class="img-fluid" src="{{ orderDetail.product.imageUrl }}">
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="accordion my-5" id="accordionExample">
+    <div class="card" *ngFor="let order of orders; let i=index;">
+        <div class="card-header" id="heading{{i}}">
+            <!-- <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                    attr.data-target="#collapse{{i}}" aria-expanded="true" attr.aria-controls="collapse{{i}}">
+                    #ORD-{{ order.order.orderNumber }}
+                </button>
+            </h2> -->
+            <div class="row-sm">
+                <div class="col-sm">
+                    <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
+                        attr.data-target="#collapse{{i}}" aria-expanded="true" attr.aria-controls="collapse{{i}}"
+                        (click)="getOrderDetails(order.order)">
+                        #ORD-{{ order.order.orderNumber }}
+                    </button>
+                    <!-- <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#orderNum-{{i}}"
+                        aria-expanded="false" aria-controls="orderNum-{{i}}" (click)="getOrderDetails(order.order)">
+                        #ORD-{{ order.order.orderNumber }}
+                    </button> -->
+                </div>
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm">
+                            Order Amount
+                        </div>
+                        <div class="col-sm">
+                            Order Date
+                        </div>
+                        <div class="col-sm">
+                            Delivery Date
+                        </div>
+                        <div class="col-sm">
+                            Transaction Status
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            {{ order.order.invoiceAmount }}/-
+                        </div>
+                        <div class="col-sm">
+                            {{ order.order.orderDate }}
+                        </div>
+                        <div class="col-sm">
+                            {{ order.order.deliveryDate }}
+                        </div>
+                        <div class="col-sm" *ngIf="order.order.transStatus==='SUCCESS'">
+                            Fully Paid
+                        </div>
+                        <div class="col-sm" *ngIf="order.order.transStatus!=='SUCCESS'">
+                            Not-Paid
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="collapse{{i}}" class="collapse" attr.aria-labelledby="heading{{i}}" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="container" *ngFor="let orderDetail of orderDetails">
+                    <div class="row">
+                        <div class="col-sm font-weight-bold d-flex align-items-center">
+                            {{ orderDetail.product.productBrand }} {{ orderDetail.product.productName }} <br><br>
+                            Category: {{ orderDetail.category.categoryName }} <br><br>
+                            Quantity: {{ orderDetail.orderDetails.unitQty }} <br><br>
+                            Buy Price: {{ orderDetail.orderDetails.total }}/-
+
+                        </div>
+                        <div class="col-sm d-flex align-items-center">
+                            Supplier: {{ orderDetail.supplier.companyName }} <br><br>
+                            {{ orderDetail.supplier.city }}, {{ orderDetail.supplier.state }} <br><br>
+                            Payment Mode: {{ order.payment.paymentType }} <br><br>
+                            Shipper: {{ order.shipper.companyName }}
+                        </div>
+                        <div class="col-sm">
+                            <img class="img-fluid" src="{{ orderDetail.product.imageUrl }}">
+                        </div>
+                    </div>
+                    <hr />
                 </div>
             </div>
         </div>
