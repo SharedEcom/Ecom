@@ -20,10 +20,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   constructor(public navService: NavbarService, public authService: AuthService, public router: Router) {
 
+    // Hide navbar
     navService.hide()
 
     this.user = new User()
 
+    // Initialize all states
     this.states = ["Andaman and Nicobar Islands",
       "Andra Pradesh",
       "Arunachal Pradesh",
@@ -67,13 +69,15 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // Display navbar when page closes
     this.navService.show()
   }
 
+  // Function to validate username
   checkUsername() {
     this.usernameExists = false
     if (this.user.username === null || this.user.username === undefined || this.user.username === '') {
-
+      
     } else {
       this.authService.checkUsername(this.user.username).subscribe(res => {
         if (res === null || res === undefined) {
@@ -91,16 +95,18 @@ export class SignUpComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Register User
   registerSubmit() {
     this.successFlag = false
     this.errorFlag = false
-
+    // Setting shipping address as permanent address
     this.user.shippingAddress = this.user.flatNumber + this.user.customerBuilding + this.user.customerAddress
     this.user.shippingCity = this.user.customerCity
     this.user.shippingState = this.user.customerState
     this.user.shippingCode = this.user.postalCode
     this.user.shippingCountry = this.user.customerCountry
 
+    // Register user
     this.authService.signup(this.user).subscribe(res => {
       if (res === null || res === undefined) {
         // REGISTER FAILED

@@ -1,141 +1,10 @@
-<!-- <div class="container my-5 p-5 border border-primary rounded p-5 shadow-lg bg-white">
-    <div id="accordion">
-        <div class="card m-5">
-            <div class="card-header" id="heading">
+<div class="jumbotron mt-1">
+    <h2 class="h2 text-center">My Orders</h2>
+</div>
 
-                <div class="row">
-                    <div class="col-sm">
-                        <button class="btn btn-primary btn-sm" data-toggle="collapse1" data-target="#collapse1"
-                            aria-expanded="false" aria-controls="collapse1">
-                            Order Number 1
-                        </button>
-                    </div>
-                    <div class="col-sm">
-                        Total Amount
-                    </div>
-                    <div class="col-sm">
-                        Order Date:
-                    </div>
-                    <div class="col-sm">
-                        Delivery Date:
-                    </div>
-                    <div class="col-sm">
-                        Transaction status:
-                    </div>
-                </div>
-                <div id="collapse1" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-                    <div class="card-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                    Product Name, Brand <br>
-                                    Category <br>
-                                    Quantity <br>
-                                    Price
-
-                                </div>
-                                <div class="col-sm">
-                                    Supplier Company <br>
-                                    Supplier City, State <br>
-                                    Payment Mode <br>
-                                    Shipper Details
-                                </div>
-                                <div class="col-sm">
-                                    <img class="img-fluid" src="https://i.imgur.com/iItpzRh.jpg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- <div class="accordion my-5" id="accordionExample">
-    <div class="card border-primary">
-        <div class="card-header" id="headingOne">
-            <div class="row-sm">
-                <div class="col-sm">
-                    <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#orderNum-{{i}}"
-                        aria-expanded="false" aria-controls="orderNum-{{i}}" (click)="getOrderDetails(order.order)">
-                        #ORD-{{ order.order.orderNumber }}
-                    </button>
-                </div>
-                <div class="col-sm">
-                    <div class="row">
-                        <div class="col-sm">
-                            Order Amount
-                        </div>
-                        <div class="col-sm">
-                            Order Date
-                        </div>
-                        <div class="col-sm">
-                            Delivery Date
-                        </div>
-                        <div class="col-sm">
-                            Transaction Status
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            {{ order.order.invoiceAmount }}/-
-                        </div>
-                        <div class="col-sm">
-                            {{ order.order.orderDate }}
-                        </div>
-                        <div class="col-sm">
-                            {{ order.order.deliveryDate }}
-                        </div>
-                        <div class="col-sm" *ngIf="order.order.transStatus==='SUCCESS'">
-                            Fully Paid
-                        </div>
-                        <div class="col-sm" *ngIf="order.order.transStatus!=='SUCCESS'">
-                            Not-Paid
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card mx-3 my-2 border-primary" *ngFor="let orderDetail of orderDetails">
-            <div id="orderNum-{{i}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm font-weight-bold">
-                                {{ orderDetail.product.productBrand }} {{ orderDetail.product.productName }}  <br><br>
-                                Category: {{ orderDetail.category.categoryName }} <br><br>
-                                Quantity: {{ orderDetail.orderDetails.unitQty }} <br><br>
-                                Buy Price: {{ orderDetail.orderDetails.total }}/-
-
-                            </div>
-                            <div class="col-sm">
-                                Supplier: {{ orderDetail.supplier.companyName }} <br><br>
-                                {{ orderDetail.supplier.city }}, {{ orderDetail.supplier.state }} <br><br>
-                                Payment Mode: {{ order.payment.paymentType }} <br><br>
-                                Shipper: {{ order.shipper.companyName }}
-                            </div>
-                            <div class="col-sm">
-                                <img class="img-fluid" src="{{ orderDetail.product.imageUrl }}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<div class="accordion my-5" id="accordionExample">
+<div class="accordion my-3" id="accordionExample">
     <div class="card" *ngFor="let order of orders; let i=index;">
         <div class="card-header" id="heading{{i}}">
-            <!-- <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                    attr.data-target="#collapse{{i}}" aria-expanded="true" attr.aria-controls="collapse{{i}}">
-                    #ORD-{{ order.order.orderNumber }}
-                </button>
-            </h2> -->
             <div class="row-sm">
                 <div class="col-sm">
                     <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
@@ -143,10 +12,6 @@
                         (click)="getOrderDetails(order.order)">
                         #ORD-{{ order.order.orderNumber }}
                     </button>
-                    <!-- <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#orderNum-{{i}}"
-                        aria-expanded="false" aria-controls="orderNum-{{i}}" (click)="getOrderDetails(order.order)">
-                        #ORD-{{ order.order.orderNumber }}
-                    </button> -->
                 </div>
                 <div class="col-sm">
                     <div class="row">
@@ -197,7 +62,7 @@
                         </div>
                         <div class="col-sm d-flex align-items-center">
                             Supplier: {{ orderDetail.supplier.companyName }} <br><br>
-                            {{ orderDetail.supplier.city }}, {{ orderDetail.supplier.state }} <br><br>
+                            {{ orderDetail.supplier.city }}, {{ orderDetail.supplier.state }} - {{ orderDetail.supplier.postalCode }} <br><br>
                             Payment Mode: {{ order.payment.paymentType }} <br><br>
                             Shipper: {{ order.shipper.companyName }}
                         </div>

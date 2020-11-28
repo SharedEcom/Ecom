@@ -25,6 +25,7 @@ export class OrderListComponent implements OnInit {
     } else {
       this.orderService.getAllOrdersByCustomer().subscribe((res: any[]) => {
         this.orders = res
+        this.orders.reverse()
         console.log('orders:', this.orders)
 
         for (let order of this.orders) {

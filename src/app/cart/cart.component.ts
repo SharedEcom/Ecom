@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
   order: Order
   orderDetail: OrderDetails
   newProduct: Product
+  modalClass: string
 
   constructor(public authService: AuthService, public cartService: CartService, public prodService: ProductService, public orderService: OrderService, public orderDetailService: OrderDetailService, public router: Router) { }
 
@@ -41,6 +42,7 @@ export class CartComponent implements OnInit {
     } else {
       this.cartService.getCartByUserId().subscribe((res: any[]) => {
         this.cartProducts = res
+        this.cartProducts.reverse()
         for (let cartProduct of this.cartProducts) {
           let date = (cartProduct.cart.expShipDate)
           let newDate = (date.split(' ')[0])
@@ -157,7 +159,8 @@ export class CartComponent implements OnInit {
         })
       }
     })
-
+    this.modalClass = 'close'
+    this.router.navigateByUrl('/order-list')
   }
 
   // Update Product Qty
