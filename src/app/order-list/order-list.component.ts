@@ -23,11 +23,13 @@ export class OrderListComponent implements OnInit {
     if (!this.authService.selectedUser) {
       this.router.navigateByUrl('/login')
     } else {
+      // Getting All Orders for current user
       this.orderService.getAllOrdersByCustomer().subscribe((res: any[]) => {
         this.orders = res
         this.orders.reverse()
         console.log('orders:', this.orders)
 
+        // Change DB Datetime to DD-MM-YY
         for (let order of this.orders) {
           let date = (order.order.orderDate)
           let newDate = (date.split(' ')[0])
@@ -43,6 +45,7 @@ export class OrderListComponent implements OnInit {
     }
   }
 
+  // Get Order Details for Order
   getOrderDetails(order) {
     this.currentOrder = order
     console.log('current order', this.currentOrder)

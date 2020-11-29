@@ -1,7 +1,7 @@
-<div class="container border border-primary rounded p-5 shadow-lg bg-white m-5">
+<div class="container border border-primary rounded p-5 shadow-lg bg-white m-5" *ngIf="prodService.selectedProduct">
   <div class="row ">
-    <div class="col-md-7">
-      <img class="img-fluid" src="{{ product.imageUrl }}" alt="">
+    <div class="col-md-7 d-flex align-items-center justify-content-center">
+      <img class="img-fluid" src="{{ product.imageUrl }}" alt="Product Image Here" height="400" width="400">
     </div>
     <div class="col-md-5">
       <h1 class="my-4">{{ product.productBrand }}
@@ -20,30 +20,41 @@
       <form (ngSubmit)="setQty()" #cartQtyForm="ngForm">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-success pb-0 rounded" type="button" id="button-addon1"
-              (click)="decCartQty()"><span class="material-icons">
+            <button class="btn btn-outline-success pb-0 rounded" type="button" id="button-remove"
+              [disabled]="cart.cartQty<2" (click)="decCartQty()"><span class="material-icons">
                 remove
               </span></button>
           </div>
           <input type="text" class="form-control rounded col-md-2 text-center" value="cart.cartQty" placeholder=""
             aria-label="Example text with button addon" aria-describedby="button-addon1" maxlength="1"
-            #cartQty="ngModel" [(ngModel)]="cart.cartQty" name="cartQty">
+            #cartQty="ngModel" [(ngModel)]="cart.cartQty" name="cartQty" [disabled]="disableCart">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-success pb-0 rounded" type="button" id="button-addon1"
-              [disabled]="cart.cartQty===0" (click)="incCartQty()"><span class="material-icons">
+            <button class="btn btn-outline-success pb-0 rounded" type="button" id="button-add"
+              [disabled]="cart.cartQty===9 || cart.cartQty===product.inStockQty || disableCart" (click)="incCartQty()"><span class="material-icons">
                 add
               </span></button>
           </div>
         </div>
-        <a (click)="addToCart()" id="btnShow" class="btn btn-success my-3" data-toggle="modal" data-target="#myModal">Add To Cart</a>
+        <button (click)="addToCart()" id="btnShow" class="btn btn-success my-3" data-toggle="modal"
+          data-target="#myModal" [disabled]="disableCart">Add To Cart</button>
         <div class="modal fade" id="myModal" role="dialog">
           <div class="modal-dialog">
-              <div class="alert alert-success alert-dismissible">
-                  <a  class="close" data-dismiss="modal" aria-label="close">&times;</a>
-                  <strong>Success!</strong> This item is added to Your cart!! 
-                </div>
+            <div class="alert alert-success alert-dismissible">
+              <a class="close" data-dismiss="modal" aria-label="close">&times;</a>
+              <strong>Success!</strong> This item is added to Your cart!!
+            </div>
           </div>
         </div>
       </form>
     </div>
   </div>
+</div>
+
+<div class="my-3" *ngIf="!prodService.selectedProduct">
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">No Product!</h4>
+    <p>Woah.. Seems like you have not chosen any product</p>
+    <hr>
+    <p class="mb-0">Please choose a <a routerLink="/" class="text-danger"><b>Product</b></a></p>
+  </div>
+</div>

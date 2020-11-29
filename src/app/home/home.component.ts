@@ -16,19 +16,23 @@ export class HomeComponent implements OnInit {
   constructor(public prodService: ProductService, public categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    // Get All Products
     this.prodService.getAllProducts().subscribe((list: Product[]) => {
       this.prodService.products = list
     })
 
+    // Get All Categories
     this.categoryService.getAllCategories().subscribe((list: Category[]) => {
       this.categories = list
     })
   }
 
+  // Get Products By Product Id
   getProductById(id) {
     this.prodService.selectedProduct = this.prodService.products[id]
   }
 
+  // Get Products By Category Id
   getProducts(category) {
     this.prodService.getProductsByCatId(category.categoryId).subscribe((res: Product[]) => {
       console.log(res)

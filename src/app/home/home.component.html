@@ -1,22 +1,40 @@
 <div class="d-flex justify-content-center">
   <div class="d-flex flex-row flex-nowrap ">
-    <a class="btn btn-outline-primary m-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+    <a class="btn btn-outline-primary m-2"
+      style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
       *ngFor="let category of categories" (click)="getProducts(category)">{{category.categoryName}}</a>
   </div>
 </div>
 <div class="card-columns mb-4 m-4">
-  <div class="card h-100 "  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" *ngFor="let product of prodService.products; let i = index">
-    <img src="{{ product.imageUrl }}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ product.productBrand }} {{ product.productName }}</h5>
-      <p class="card-text"><del>{{ product.mrp }}/-</del></p>
-      <h5 class="h5 card-text">Discount : {{ product.discount }}/-</h5>
-      <h5 class="h5 card-text">Offer Price : {{ product.mrp - product.discount }}/-</h5>
-      <p class="card-text text-danger" *ngIf="product.inStockQty<50 || product.inStockQty == 50">Hurry!! Only
-        {{ product.inStockQty }} left in stock</p>
-      <div>
-        <a class="stretched-link text-info" (click)="getProductById(i)" routerLink="productdetails">More
-          Details..</a>
+  <div class="card h-100" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+    *ngFor="let product of prodService.products; let i = index">
+    <div *ngIf="product.inStockQty<1" class="">
+      <img src="{{ product.imageUrl }}" class="card-img-top" alt="Product Image Here" style="opacity: 0.5;">
+      <div class="card-body">
+        <h5 class="card-title text-muted">{{ product.productBrand }} {{ product.productName }}</h5>
+        <p class="card-text text-muted"><del>{{ product.mrp }}/-</del></p>
+        <h5 class="h5 card-text text-muted">Discount : {{ product.discount }}/-</h5>
+        <h5 class="h5 card-text text-muted">Offer Price : {{ product.mrp - product.discount }}/-</h5>
+        <div>
+          <a class="stretched-link text-info text-muted" (click)="getProductById(i)" routerLink="productdetails">More
+            Details..</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="product.inStockQty>0">
+      <img src="{{ product.imageUrl }}" class="card-img-top" alt="Product Image Here">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.productBrand }} {{ product.productName }}</h5>
+        <p class="card-text"><del>{{ product.mrp }}/-</del></p>
+        <h5 class="h5 card-text">Discount : {{ product.discount }}/-</h5>
+        <h5 class="h5 card-text">Offer Price : {{ product.mrp - product.discount }}/-</h5>
+        <p class="card-text text-danger" *ngIf="product.inStockQty<50 || product.inStockQty == 50">Hurry!! Only
+          {{ product.inStockQty }} left in stock</p>
+        <div>
+          <a class="stretched-link text-info" (click)="getProductById(i)" routerLink="productdetails">More
+            Details..</a>
+        </div>
       </div>
     </div>
   </div>
+</div>

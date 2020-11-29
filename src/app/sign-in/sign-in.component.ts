@@ -28,6 +28,7 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.navService.show()
   }
 
+  // Login User
   loginSubmit() {
     this.successFlag = false
     this.errorFlag = false

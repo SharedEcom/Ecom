@@ -16,12 +16,16 @@ export class UpdateProfileComponent implements OnInit {
   constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit(): void {
+    // Check if user is logged in
     if (this.authService.selectedUser) {
       this.user = this.authService.selectedUser
     } else {
       this.router.navigateByUrl('/login')
     }
-    this.states = ["Andaman and Nicobar Islands",
+
+    // Initialize all states
+    this.states = [
+      "Andaman and Nicobar Islands",
       "Andra Pradesh",
       "Arunachal Pradesh",
       "Assam",
@@ -60,6 +64,7 @@ export class UpdateProfileComponent implements OnInit {
     ]
   }
 
+  // Funtion to Update profile
   updateProfile() {
     this.authService.updateProfile(this.user).subscribe((res: User) => {
       this.authService.selectedUser = res

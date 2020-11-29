@@ -20,47 +20,52 @@ export class ProductDetailsComponent implements OnInit {
   product: Product
   productDetails: ProductDetails[]
   cart: Cart
-  inCart: any[]
-  addedToCart: boolean
+  disableCart: boolean
 
   constructor(public prodService: ProductService, public authService: AuthService, public prodDetailService: ProductDetailsService, public cartService: CartService, public router: Router) { }
 
   ngOnInit(): void {
     this.cart = new Cart()
-    this.product = this.prodService.selectedProduct
-    this.prodDetailService.getProductById(this.product.productId).subscribe((res: ProductDetails[]) => {
-      this.productDetails = res
-    })
-    this.inCart = this.cartService.cart
+    // Get Product from Product Details
+    if (this.prodService.selectedProduct) {
+      this.product = this.prodService.selectedProduct
+      if (this.product.inStockQty < 1) {
+        this.disableCart = true
+      } else {
+        this.disableCart = false
+      }
+      console.log(this.product.inStockQty)
+      this.prodDetailService.getProductById(this.product.productId).subscribe((res: ProductDetails[]) => {
+        this.productDetails = res
+      })
+    }
   }
 
-  setQty() {
+  setQty() { }
 
-  }
-
+  // Increment Cart Qty
   incCartQty() {
     if (this.cart.cartQty < this.product.inStockQty) {
       this.cart.cartQty++
     }
   }
 
+  // Decrement Cart Qty
   decCartQty() {
-    if (!(this.cart.cartQty > 0)) {
+    if (this.cart.cartQty > 0) {
       this.cart.cartQty--
     }
   }
 
-  getCartQty() {
-    console.log((document.getElementById('cartQty') as HTMLInputElement).value)
-  }
-
+  // Add to Cart
   addToCart() {
-    this.addedToCart = false
     this.user = this.authService.selectedUser
     this.product = this.prodService.selectedProduct
+    // Check if user logged in
     if (!this.user) {
       this.router.navigateByUrl('/login')
     } else {
+      // Check if product is selected
       if (!this.product) {
         this.router.navigateByUrl('/')
       } else {
@@ -72,14 +77,15 @@ export class ProductDetailsComponent implements OnInit {
         this.cart.expBillDate = this.newDate(9)
         this.cart.expDeliveryDate = this.newDate(8)
         this.cart.createdOn = this.newDate(0)
+        // Add Items to Cart
         this.cartService.addToCart(this.cart).subscribe((res: Cart) => {
-          this.addedToCart = true
           this.cart = res
         })
       }
     }
   }
 
+  // Convert Date to DB DateTime format
   newDate(days) {
     var date = new Date();
     date.setDate(date.getDate() + days)

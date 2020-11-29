@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" style="box-shadow: 0px 1px 10px rgb(85, 85, 85);" *ngIf="navService.visible">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" style="box-shadow: 0px 1px 10px rgb(85, 85, 85);"
+    *ngIf="navService.visible">
     <a class="navbar-brand" routerLink="" (click)="getAllProducts()">E-Comm</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
         aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,10 +21,10 @@
                 </div>
             </li>
         </ul>
-        <input class="form-control ml-5" type="text" placeholder="Search Product" #searchText>
+        <input class="form-control ml-5" type="text" placeholder="Search Product" (keypress)="search($event, searchText)"
+            #searchText>
         <button class="btn btn-white bg-light mr-5" type="submit" (click)="searchProduct(searchText)"><i
-            class="fa fa-search" >
-            
+                class="fa fa-search">
             </i></button>
         <form class="form-inline my-2 my-lg-0">
             <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search">

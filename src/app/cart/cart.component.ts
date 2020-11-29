@@ -27,7 +27,6 @@ export class CartComponent implements OnInit {
   order: Order
   orderDetail: OrderDetails
   newProduct: Product
-  modalClass: string
 
   constructor(public authService: AuthService, public cartService: CartService, public prodService: ProductService, public orderService: OrderService, public orderDetailService: OrderDetailService, public router: Router) { }
 
@@ -88,13 +87,6 @@ export class CartComponent implements OnInit {
       ("00" + date.getMinutes()).slice(-2) + ":" +
       ("00" + date.getSeconds()).slice(-2);
     return dateStr
-  }
-
-  // IDK what is this
-  orderCart(cartProducts) {
-    console.log(cartProducts)
-    this.prodService.selectedProduct = cartProducts.product
-    console.log(this.prodService.selectedProduct)
   }
 
   // Display product detail on product click
@@ -159,7 +151,6 @@ export class CartComponent implements OnInit {
         })
       }
     })
-    this.modalClass = 'close'
     this.router.navigateByUrl('/order-list')
   }
 
