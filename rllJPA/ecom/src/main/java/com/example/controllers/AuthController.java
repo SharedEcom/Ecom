@@ -27,20 +27,20 @@ public class AuthController {
 	@Autowired
 	private HttpSession httpSession;
 
-	@PostMapping("/signin")
+	@PostMapping("/signin") //RESTAPI Call For SignIn of a Customer
 	public Customer signIn(@RequestBody Customer customer) {
 		Customer dbCustomer = customerRepository.findByUsernameAndPassword(customer.getUsername(),
 				customer.getPassword());
 
 		if (dbCustomer != null && dbCustomer.getUsername().equals(customer.getUsername())
 				&& dbCustomer.getPassword().equals(customer.getPassword())) {
-			httpSession.setAttribute("customerId", dbCustomer.getCustomerId());
+			httpSession.setAttribute("customerId", dbCustomer.getCustomerId());//Setting the customerId in the session
 			return dbCustomer;
 		}
 		return null;
 	}
 
-	@PostMapping("/signup")
+	@PostMapping("/signup")//RESTAPI Call For Registering a new customer
 	public Customer signUp(@RequestBody Customer customer) {
 		try {
 			Customer db = customerRepository.save(customer);
@@ -52,7 +52,7 @@ public class AuthController {
 		}
 	}
 
-	@GetMapping("/validate/{username}")
+	@GetMapping("/validate/{username}")//RestAPI call to check if the username already exists in the database
 	public Status validateUsername(@PathVariable String username) {
 
 		Customer db = customerRepository.findByUsername(username);
@@ -65,7 +65,7 @@ public class AuthController {
 		}
 	}
 
-	@PostMapping("/signout")
+	@PostMapping("/signout")//RestAPI call to Logout 
 	public Status logout() {
 
 		if (httpSession != null && httpSession.getAttribute("customerId") != null) {

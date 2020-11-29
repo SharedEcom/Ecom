@@ -1,6 +1,6 @@
 package com.example.models;
 
-public class OrderContents {
+public class OrderContents { //This is a dummy class which is used to display the info in the cards when you click on My orders in the FrontEnd
 	private Orders order;
 	private Shippers shipper;
 	private Payments payment;

@@ -48,7 +48,7 @@ public class OrderDetailsController {
 		return (httpSession.getAttribute("customerId") == null) ? false : true;
 	}
 
-	@PostMapping("/orderDetails/add")
+	@PostMapping("/orderDetails/add") //RestAPI to add contents into the OrderDetails Table
 	public OrderDetails addToOrderDetails(@RequestBody OrderDetails orderDetails) {
 		if (httpSession.getAttribute("customerId") == null) {
 			return null;
@@ -64,7 +64,7 @@ public class OrderDetailsController {
 
 	}
 
-	@GetMapping("/orderDetails/{orderId}")
+	@GetMapping("/orderDetails/{orderId}") //RestAPI to get the Order Details of a Particular Order ID (It will contain the category,product details,suppliers etc)
 	public List<OrderDetailsDummy> getCartByCustomer(@PathVariable Integer orderId) {
 		if (httpSession.getAttribute("customerId") == null) {
 			return null;

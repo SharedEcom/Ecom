@@ -26,7 +26,7 @@ public class ProductDetailsController {
 	@Autowired
 	private ProductDetailsRepository productDetailsRepository;
 
-	@GetMapping("/productDetails/all")
+	@GetMapping("/productDetails/all")  //RestAPI to get all the ProductDetails
 	public List<ProductDetails> viewAllProductDetails() {
 		List<ProductDetails> productdetails = new ArrayList<ProductDetails>();
 		Iterable<ProductDetails> iterable = productDetailsRepository.findAll();
@@ -37,7 +37,7 @@ public class ProductDetailsController {
 		return productdetails;
 	}
 
-	@PostMapping("/productDetails/add")
+	@PostMapping("/productDetails/add") //RestAPI to add a record in the ProductDetails table
 	public ProductDetails addProductDetails(@RequestBody ProductDetails productDetails) {
 		try {
 			ProductDetails db = productDetailsRepository.save(productDetails);
@@ -48,7 +48,7 @@ public class ProductDetailsController {
 		}
 	}
 
-	@DeleteMapping("/deleteProductDetails/{id}")
+	@DeleteMapping("/deleteProductDetails/{id}")  //RestAPI to delete a record in the ProductDetails table
 	public Status deleteProductDetails(@PathVariable Integer id) {
 		try {
 			productDetailsRepository.deleteById(id);
@@ -59,7 +59,7 @@ public class ProductDetailsController {
 		}
 	}
 
-	@PutMapping("/productDetails/update")
+	@PutMapping("/productDetails/update") //RestAPI to update a record in the ProductDetails table
 	public ProductDetails updateProductDetails(@RequestBody ProductDetails productDetails) {
 		try {
 			ProductDetails db = productDetailsRepository.save(productDetails);
@@ -70,7 +70,7 @@ public class ProductDetailsController {
 		}
 	}
 
-	@GetMapping("productDetails/{productId}")
+	@GetMapping("productDetails/{productId}") //RestAPI to get all the ProductDetails of a particular Product
 	public List<ProductDetails> getProductDetailsOfAProduct(@PathVariable Integer productId) {
 		List<ProductDetails> productDetails = new ArrayList<ProductDetails>();
 		Iterable<ProductDetails> iterable = productDetailsRepository.findByProductId(productId);

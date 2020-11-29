@@ -38,7 +38,7 @@ public class OrderController {
 	@Autowired
 	private PaymentsRepository paymentsRepository;
 
-	@PostMapping("/order/add")
+	@PostMapping("/order/add")    //REST API to add contents into order table
 	public Orders addToOrder(@RequestBody Orders order) {
 		if (httpSession.getAttribute("customerId") == null) {
 			return null;
@@ -85,7 +85,7 @@ public class OrderController {
 //		}
 //	}
 
-	@GetMapping("/order/all")
+	@GetMapping("/order/all")     //RestAPI to show all the past orders of a particular customer (We will show only the orderID,invoice Amount,Payments etc)
 	public List<OrderContents> getOrderByCustomer() {
 		if (httpSession.getAttribute("customerId") == null) {
 			return null;

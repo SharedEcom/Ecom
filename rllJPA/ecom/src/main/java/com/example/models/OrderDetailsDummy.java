@@ -1,6 +1,6 @@
 package com.example.models;
 
-public class OrderDetailsDummy {
+public class OrderDetailsDummy { //This is a dummy class to display the order details when you click on a particular order in FrontEnd
 
 	private OrderDetails orderDetails;
 	private Product product;

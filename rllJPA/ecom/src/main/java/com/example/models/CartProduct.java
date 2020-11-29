@@ -1,6 +1,6 @@
 package com.example.models;
 
-public class CartProduct {
+public class CartProduct { //This is a dummy class which is used to display the cart contents in the frontend 
 
 	private Cart cart;
 	private Product product;

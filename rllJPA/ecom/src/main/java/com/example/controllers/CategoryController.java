@@ -26,7 +26,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	@GetMapping("/category/all")
+	@GetMapping("/category/all")   //RestAPI to fetch all the categories
 	public List<Category> viewAllCategory() {
 
 		List<Category> categories = new ArrayList<Category>();
@@ -39,7 +39,7 @@ public class CategoryController {
 
 	}
 
-	@PostMapping("/category/add")
+	@PostMapping("/category/add")//RestAPI to add a new category
 	public Category addCategory(@RequestBody Category category) {
 		try {
 			Category db = categoryRepository.save(category);
@@ -51,7 +51,7 @@ public class CategoryController {
 
 	}
 
-	@GetMapping("/category/{id}")
+	@GetMapping("/category/{id}") //RestAPI to get contents of a specific category
 	public Optional<Category> getCategory(@PathVariable Integer id) {
 		try {
 			return categoryRepository.findById(id);
@@ -62,7 +62,7 @@ public class CategoryController {
 		}
 	}
 
-	@DeleteMapping("/deleteCategory/{id}")
+	@DeleteMapping("/deleteCategory/{id}")  //RestAPI to delete a particular category
 	public Status deleteCategory(@PathVariable Integer id) {
 		try {
 			categoryRepository.deleteById(id);

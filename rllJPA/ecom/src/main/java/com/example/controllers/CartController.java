@@ -42,7 +42,7 @@ public class CartController {
 	@Autowired
 	private HttpSession httpSession;
 
-	@PostMapping("/cart/add")
+	@PostMapping("/cart/add")//RESTAPI call to add the items in the cart(Cart will contain multiple cart lines)
 	public Cart addToCart(@RequestBody Cart cart) {
 		if (httpSession.getAttribute("customerId") == null) {
 			return null;
@@ -75,7 +75,7 @@ public class CartController {
 	 * for (Cart cart : iterable) { carts.add(cart); } return carts; } }
 	 */
 
-	@DeleteMapping("/deleteCart/{id}")
+	@DeleteMapping("/deleteCart/{id}")//RestAPI call to delete contents of the cart once order is placed
 	public Status deleteProduct(@PathVariable Integer id) {
 		if (httpSession.getAttribute("customerId") == null) {
 			return null;
@@ -105,7 +105,8 @@ public class CartController {
 		}
 	}
 
-	@GetMapping("/cart/all")
+	@GetMapping("/cart/all")//REST API call to find the contents of the cart (We also need to display product details an category,So we create a dummy class 
+	                          // which holds cart,product and category and we return that to the front end
 	public List<CartProduct> getCartByCustomer() {
 		if (httpSession.getAttribute("customerId") == null) {
 			return null;

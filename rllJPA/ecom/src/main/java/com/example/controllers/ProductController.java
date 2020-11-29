@@ -27,7 +27,7 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 
-	@GetMapping("/product/all")
+	@GetMapping("/product/all")//RestAPI to view all the data in the product table
 	public List<Product> viewAllProducts() {
 		List<Product> products = new ArrayList<Product>();
 		Iterable<Product> iterable = productRepository.findAll();
@@ -38,7 +38,7 @@ public class ProductController {
 		return products;
 	}
 
-	@PostMapping("/product/add")
+	@PostMapping("/product/add")//RestAPI to add a record in the product table
 	public Product addProduct(@RequestBody Product product) {
 		try {
 			Product db = productRepository.save(product);
@@ -49,7 +49,7 @@ public class ProductController {
 		}
 	}
 
-	@GetMapping("/product/{id}")
+	@GetMapping("/product/{id}")//RestAPI to get the contents of that particular product
 	public Optional<Product> getProduct(@PathVariable Integer id) {
 		try {
 			return productRepository.findById(id);
@@ -60,7 +60,7 @@ public class ProductController {
 		}
 	}
 
-	@DeleteMapping("/deleteProduct/{id}")
+	@DeleteMapping("/deleteProduct/{id}") //RestAPI to delete the product from the product table
 	public Status deleteProduct(@PathVariable Integer id) {
 		try {
 			productRepository.deleteById(id);
@@ -71,7 +71,7 @@ public class ProductController {
 		}
 	}
 
-	@PutMapping("/product/update")
+	@PutMapping("/product/update") //RestAPI to update the info of the particular product
 	public Product updateProduct(@RequestBody Product product) {
 		try {
 			Product db = productRepository.save(product);
@@ -82,7 +82,7 @@ public class ProductController {
 		}
 	}
 
-	@GetMapping("/product/category/{categoryId}")
+	@GetMapping("/product/category/{categoryId}") //RestAPI to get all the products of a particular category
 	public List<Product> getProductsOfACategory(@PathVariable Integer categoryId) {
 		List<Product> products = new ArrayList<Product>();
 		Iterable<Product> iterable = productRepository.findByCategoryId(categoryId);
@@ -92,7 +92,7 @@ public class ProductController {
 		return products;
 	}
 	
-	@GetMapping("/product/search/{keyword}")
+	@GetMapping("/product/search/{keyword}")//RestAPI to search all the products containing the keyword by giving the said keyword in the searchBar
 	public List<Product> searchProduct(@PathVariable String keyword) {
 		try {
 			return productRepository.searchProducts(keyword);
