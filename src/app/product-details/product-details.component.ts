@@ -34,7 +34,6 @@ export class ProductDetailsComponent implements OnInit {
       } else {
         this.disableCart = false
       }
-      console.log(this.product.inStockQty)
       this.prodDetailService.getProductById(this.product.productId).subscribe((res: ProductDetails[]) => {
         this.productDetails = res
       })
