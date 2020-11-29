@@ -1,7 +1,8 @@
 <div class="my-5">
     <form class="d-flex flex-row justify-content-center align-items-center p-2" (ngSubmit)="registerSubmit()"
         #registerForm="ngForm">
-        <div class="border border-primary rounded p-5 bg-white rounded"  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="border border-primary rounded p-5 bg-white rounded"
+            style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
             <h3 class="h3 text-center mb-5">Registration</h3>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -40,7 +41,8 @@
                 <div class="form-group col-md-6">
                     <label for="userContact">Contact Number</label>
                     <input type="text" class="form-control" id="userContact" name="userContact" placeholder="XXXXXXXXXX"
-                        #customerPhone="ngModel" [(ngModel)]="user.customerPhone" minlength=10 maxlength=10 required>
+                        #customerPhone="ngModel" [(ngModel)]="user.customerPhone" minlength=10 maxlength=10 required
+                        (keypress)="numberOnly($event)">
                     <small class="form-text text-danger" *ngIf="customerPhone.dirty && customerPhone.invalid">Contact
                         must have 10 digits</small>
 
@@ -99,8 +101,8 @@
                 <div class="form-group col-md-2">
                     <label for="userPostalCode">ZIP</label>
                     <input type="text" class="form-control" id="userPostalCode" name="userPostalCode"
-                        placeholder="xxx-xxx" #postalCode="ngModel" [(ngModel)]="user.postalCode" minlength=6
-                        maxlength=6 required>
+                        placeholder="xxxxxx" #postalCode="ngModel" [(ngModel)]="user.postalCode" minlength=6
+                        maxlength=6 required (keypress)="numberOnly($event)">
                     <small class="form-text text-danger" *ngIf="postalCode.dirty && postalCode.invalid">Postal Code
                         must have 6 digits</small>
                 </div>

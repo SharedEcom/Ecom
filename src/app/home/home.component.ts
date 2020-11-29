@@ -16,11 +16,10 @@ export class HomeComponent implements OnInit {
   constructor(public prodService: ProductService, public categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    if (this.prodService.products) {
-
-    } else {
+    if (!this.prodService.products) {
       // Get All Products
       this.prodService.getAllProducts().subscribe((list: Product[]) => {
+        list.sort((a, b) => (a.inStockQty < b.inStockQty) ? 1 : (a.inStockQty === b.inStockQty) ? ((a.productId > b.productId) ? 1 : -1) : -1)
         this.prodService.products = list
       })
     }
@@ -39,7 +38,7 @@ export class HomeComponent implements OnInit {
   // Get Products By Category Id
   getProducts(category) {
     this.prodService.getProductsByCatId(category.categoryId).subscribe((res: Product[]) => {
-      console.log(res)
+      res.sort((a, b) => (a.inStockQty < b.inStockQty) ? 1 : (a.inStockQty === b.inStockQty) ? ((a.productId > b.productId) ? 1 : -1) : -1)
       this.prodService.products = res
     })
   }

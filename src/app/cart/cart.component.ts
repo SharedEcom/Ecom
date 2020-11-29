@@ -53,7 +53,6 @@ export class CartComponent implements OnInit {
           cartProduct.cart.expDeliveryDate = (newDate.split('-')[2] + '-' + newDate.split('-')[1] + '-' + newDate.split('-')[0])
         }
         this.cartService.cart = this.cartProducts
-        
       })
     }
   }
@@ -92,7 +91,7 @@ export class CartComponent implements OnInit {
   // Display product detail on product click
   showProduct(cartProduct) {
     this.prodService.selectedProduct = cartProduct.product
-    this.router.navigateByUrl('/productdetails')
+    this.router.navigateByUrl('/product-detail')
   }
 
   // remove item from cart UI
@@ -137,10 +136,6 @@ export class CartComponent implements OnInit {
         this.orderDetailService.createOrderDetails(this.orderDetail).subscribe((res: OrderDetails) => {
           this.orderDetail = res
         })
-        this.newProduct = this.cartProducts[cartProduct].product
-        this.newProduct.inStockQty = this.newProduct.inStockQty - this.orderDetail.unitQty
-        // Update Product Qty
-        this.updateProductQty(this.newProduct)
         // Delete Item From Cart
         this.deleteCart(this.cartProducts[cartProduct].cart.cartId)
         // Refresh Order Details
@@ -148,10 +143,10 @@ export class CartComponent implements OnInit {
         this.cartService.getCartByUserId().subscribe((res: any[]) => {
           this.cartProducts = res
           this.cartService.cart = this.cartProducts
+          this.router.navigateByUrl('/order-list')
         })
       }
     })
-    this.router.navigateByUrl('/order-list')
   }
 
   // Update Product Qty

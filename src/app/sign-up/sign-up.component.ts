@@ -77,7 +77,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   checkUsername() {
     this.usernameExists = false
     if (this.user.username === null || this.user.username === undefined || this.user.username === '') {
-      
+
     } else {
       this.authService.checkUsername(this.user.username).subscribe(res => {
         if (res === null || res === undefined) {
@@ -124,5 +124,14 @@ export class SignUpComponent implements OnInit, OnDestroy {
         }, 2000)
       }
     })
+  }
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
 }

@@ -16,7 +16,7 @@
         <h5 class="h5 card-text text-muted">Discount : {{ product.discount }}/-</h5>
         <h5 class="h5 card-text text-muted">Offer Price : {{ product.mrp - product.discount }}/-</h5>
         <div>
-          <a class="stretched-link text-info text-muted" (click)="getProductById(i)" routerLink="productdetails">More
+          <a class="stretched-link text-info text-muted" (click)="getProductById(i)" routerLink="product-detail">More
             Details..</a>
         </div>
       </div>
@@ -31,7 +31,7 @@
         <p class="card-text text-danger" *ngIf="product.inStockQty<50 || product.inStockQty == 50">Hurry!! Only
           {{ product.inStockQty }} left in stock</p>
         <div>
-          <a class="stretched-link text-info" (click)="getProductById(i)" routerLink="productdetails">More
+          <a class="stretched-link text-info" (click)="getProductById(i)" routerLink="product-detail">More
             Details..</a>
         </div>
       </div>

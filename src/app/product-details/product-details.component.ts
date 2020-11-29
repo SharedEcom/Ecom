@@ -76,9 +76,13 @@ export class ProductDetailsComponent implements OnInit {
         this.cart.expBillDate = this.newDate(9)
         this.cart.expDeliveryDate = this.newDate(8)
         this.cart.createdOn = this.newDate(0)
-        // Add Items to Cart
-        this.cartService.addToCart(this.cart).subscribe((res: Cart) => {
-          this.cart = res
+        // Reduce Product Qty
+        this.product.inStockQty = this.product.inStockQty - this.cart.cartQty
+        this.prodService.updateProduct(this.product).subscribe((res: Product) => {
+          // Add Items to Cart
+          this.cartService.addToCart(this.cart).subscribe((res: Cart) => {
+            this.cart = res
+          })
         })
       }
     }

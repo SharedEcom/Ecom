@@ -36,6 +36,7 @@ export class NavbarComponent implements OnInit {
   // Get All Products
   getAllProducts() {
     this.prodService.getAllProducts().subscribe((list: Product[]) => {
+      list.sort((a, b) => (a.inStockQty < b.inStockQty) ? 1 : (a.inStockQty === b.inStockQty) ? ((a.productId > b.productId) ? 1 : -1) : -1)
       this.prodService.products = list
     })
   }
@@ -43,6 +44,7 @@ export class NavbarComponent implements OnInit {
   // Get Products By Category
   getProducts(category) {
     this.prodService.getProductsByCatId(category.categoryId).subscribe((res: Product[]) => {
+      res.sort((a, b) => (a.inStockQty < b.inStockQty) ? 1 : (a.inStockQty === b.inStockQty) ? ((a.productId > b.productId) ? 1 : -1) : -1)
       this.prodService.products = res
     })
   }
